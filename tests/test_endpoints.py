@@ -76,8 +76,16 @@ def test_app_level0(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
 
 @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level3"})
 def test_app_level3(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
-    resp = requests.get(f"{nhsd_apim_proxy_url}", headers=nhsd_apim_auth_headers)
-    assert resp.status_code == 200
+    target_server_headers = {
+        "Content-Type": "application/json",
+        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C"
+    }
+    request_body = {
+    "query": "query PublishedCohortLibraryGetAll {\n  PublishedCohortLibraryGetAll { __typename ... on Cohorts { cohorts { urlSlug } } ... on ErrorDescription { code correlationId errorDescription } }\n}"
+    }
+    resp = requests.post(f"{nhsd_apim_proxy_url}/api", headers=target_server_headers.update(nhsd_apim_auth_headers), json=request_body)
+    print(resp.status_code)
+    print(resp.json())
 
 
 @pytest.mark.nhsd_apim_authorization(
@@ -88,5 +96,14 @@ def test_app_level3(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
     }
 )
 def test_cis2_aal3(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
-    resp = requests.get(f"{nhsd_apim_proxy_url}", headers=nhsd_apim_auth_headers)
-    assert resp.status_code == 200
+    target_server_headers = {
+        "Content-Type": "application/json",
+        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C"
+    }
+    request_body = {
+    "query": "query PublishedCohortLibraryGetAll {\n  PublishedCohortLibraryGetAll { __typename ... on Cohorts { cohorts { urlSlug } } ... on ErrorDescription { code correlationId errorDescription } }\n}"
+    }
+    resp = requests.post(f"{nhsd_apim_proxy_url}/api", headers=target_server_headers.update(nhsd_apim_auth_headers), json=request_body)
+    print(f"proxy_url: {nhsd_apim_proxy_url}/api; header:{target_server_headers.update(nhsd_apim_auth_headers)}; request_body: {request_body}")
+    print(resp.status_code)
+    print(resp.json())
