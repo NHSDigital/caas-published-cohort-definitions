@@ -33,7 +33,7 @@
       <Enabled>true</Enabled>
     </SSLInfo>
     <LoadBalancer>
-      <Server name="caas-published-cohort-definitions" />
+      <Server name="caas-published-cohort-definitions-target" />
     </LoadBalancer>
   </HTTPTargetConnection>
 </TargetEndpoint>
