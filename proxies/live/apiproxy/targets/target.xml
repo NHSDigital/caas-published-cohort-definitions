@@ -1,11 +1,6 @@
 <TargetEndpoint name="caas-published-cohort-definitions-target">
   <PreFlow>
     <Request>
-      <Step>
-        <VerifyAPIKey name="APIKeyVerifier">
-          <APIKey ref="request.header.x-api-key" />
-        </VerifyAPIKey>
-      </Step>
       <!-- <Step>
         <Name>OauthV2.VerifyAccessTokenAppLevel3OrCis2Aal3</Name>
       </Step> -->
