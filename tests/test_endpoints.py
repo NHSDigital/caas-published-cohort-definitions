@@ -68,63 +68,24 @@ def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
     assert deployed_commitId == getenv('SOURCE_COMMIT_ID')
 
 
-@pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
-def test_app_level0(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
-    resp = requests.get(f"{nhsd_apim_proxy_url}", headers=nhsd_apim_auth_headers)
-    assert resp.status_code == 401  # unauthorized
-
-
-@pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level3"})
-def test_app_level3(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
+@pytest.mark.smoketest
+def test_for_connection_status(nhsd_apim_proxy_url):
     target_server_headers = {
-        "Content-Type": "application/json",
-        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C"
-    }
+            "Content-Type": "application/json",
+            "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C"
+        }
+
     request_body = {
         "query": (
-            "query PublishedCohortLibraryGetAll {"
-            "\n  PublishedCohortLibraryGetAll {"
-            " __typename ... on Cohorts {"
-            " cohorts { urlSlug } } ... on ErrorDescription {"
-            " code correlationId errorDescription } }"
-            "\n}"
+            "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
+            "{ ... on Cohorts { cohorts { urlSlug } } "
+            "... on ErrorDescription { code correlationId errorDescription } }}"
         )
     }
     resp = requests.post(
         f"{nhsd_apim_proxy_url}/api",
-        headers=target_server_headers.update(nhsd_apim_auth_headers),
+        headers=target_server_headers,
         json=request_body
     )
-    print(resp.status_code)
-    print(resp.json())
-
-
-@pytest.mark.nhsd_apim_authorization(
-    {
-        "access": "healthcare_worker",
-        "level": "aal3",
-        "login_form": {"username": "656005750104"},
-    }
-)
-def test_cis2_aal3(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
-    target_server_headers = {
-        "Content-Type": "application/json",
-        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C"
-    }
-    request_body = {
-        "query": (
-            "query PublishedCohortLibraryGetAll {"
-            "\n  PublishedCohortLibraryGetAll {"
-            " __typename ... on Cohorts {"
-            " cohorts { urlSlug } } ... on ErrorDescription {"
-            " code correlationId errorDescription } }"
-            "\n}"
-        )
-    }
-    resp = requests.post(
-        f"{nhsd_apim_proxy_url}/api",
-        headers=target_server_headers.update(nhsd_apim_auth_headers),
-        json=request_body
-    )
-    print(resp.status_code)
+    assert resp.status_code == 200
     print(resp.json())

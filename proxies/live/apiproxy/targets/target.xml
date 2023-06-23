@@ -1,27 +1,11 @@
 <TargetEndpoint name="caas-published-cohort-definitions-target">
   <PreFlow>
     <Request>
-      <!-- <Step>
-        <Name>OauthV2.VerifyAccessTokenAppLevel3OrCis2Aal3</Name>
-      </Step> -->
       <Step>
         <Name>FlowCallout.ApplyRateLimiting</Name>
       </Step>
     </Request>
   </PreFlow>
-  <!-- <FaultRules> -->
-  <!-- Anything unexpected will be sanitsed by the DefaultFaultRule -
-  https://docs.apigee.com/api-platform/fundamentals/fault-handling#customhandlingofhttperrorcodesfromthetargetserver -->
-  <!-- <FaultRule name="access_token_expired">
-      <Step>
-        <Name>ExtractVariables.OAuthErrorFaultString</Name>
-      </Step>
-      <Step>
-        <Name>AssignMessage.OAuthPolicyErrorResponse</Name>
-      </Step>
-      <Condition>oauthV2.OauthV2.VerifyAccessToken.failed</Condition>
-    </FaultRule>
-  </FaultRules> -->
   <HTTPTargetConnection>
     <Properties>
       <!-- Whitelist the 'expected' error code responses so the responses pass unhindered to caller -->
