@@ -68,25 +68,23 @@ def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
     assert deployed_commitId == getenv('SOURCE_COMMIT_ID')
 
 
-@pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
-def test_app_level0(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
-    resp = requests.get(f"{nhsd_apim_proxy_url}", headers=nhsd_apim_auth_headers)
-    assert resp.status_code == 401  # unauthorized
-
-
-@pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level3"})
-def test_app_level3(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
-    resp = requests.get(f"{nhsd_apim_proxy_url}", headers=nhsd_apim_auth_headers)
-    assert resp.status_code == 200
-
-
-@pytest.mark.nhsd_apim_authorization(
-    {
-        "access": "healthcare_worker",
-        "level": "aal3",
-        "login_form": {"username": "656005750104"},
+@pytest.mark.smoketest
+def test_for_connection_status(nhsd_apim_proxy_url):
+    target_server_headers = {
+        "Content-Type": "application/json",
+        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C"
     }
-)
-def test_cis2_aal3(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
-    resp = requests.get(f"{nhsd_apim_proxy_url}", headers=nhsd_apim_auth_headers)
+
+    request_body = {
+        "query": (
+            "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
+            "{ ... on Cohorts { cohorts { urlSlug } } "
+            "... on ErrorDescription { code correlationId errorDescription } }}"
+        )
+    }
+    resp = requests.post(
+        f"{nhsd_apim_proxy_url}/api",
+        headers=target_server_headers,
+        json=request_body
+    )
     assert resp.status_code == 200
