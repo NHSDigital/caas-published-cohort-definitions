@@ -71,9 +71,9 @@ def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
 @pytest.mark.smoketest
 def test_for_connection_status(nhsd_apim_proxy_url):
     target_server_headers = {
-            "Content-Type": "application/json",
-            "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C"
-        }
+        "Content-Type": "application/json",
+        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C"
+    }
 
     request_body = {
         "query": (
@@ -88,4 +88,3 @@ def test_for_connection_status(nhsd_apim_proxy_url):
         json=request_body
     )
     assert resp.status_code == 200
-    print(resp.json())
