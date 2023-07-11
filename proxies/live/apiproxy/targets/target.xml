@@ -10,7 +10,8 @@
     <Properties>
       <!-- Whitelist the 'expected' error code responses so the responses pass unhindered to caller -->
       <Property name="success.codes">1xx,2xx,3xx,4xx</Property>
-      <Property name="request.retain.headers">Content-Type,x-api-key</Property>
+      <Property name="request.retain.headers.enabled">false</Property>
+      <Property name="request.retain.headers">Content-Type,x-api-key,nhsd-correlation-id</Property>
     </Properties>
     <SSLInfo>
       <Enabled>true</Enabled>
