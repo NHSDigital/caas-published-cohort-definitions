@@ -1,11 +1,11 @@
 <AssignMessage async="false" continueOnError="false" enabled="true"
-  name="AssignMessage.RemoveProxyHeaders">
-  <DisplayName>Remove Specific Proxy Request Headers</DisplayName>
+  name="AssignMessage.RemoveTargetHeaders">
+  <DisplayName>Remove Specific Target Request Headers</DisplayName>
   <Remove>
     <Headers>
       <Header>x-request-id</Header>
+      <Header>x-correlation-id</Header>
       <Header>nhsd-request-id</Header>
-      <Header>nhsd-correlation-id</Header>
     </Headers>
   </Remove>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
