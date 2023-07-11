@@ -12,31 +12,28 @@
 
   <Flows>
     <Flow name="OptionsPreFlight">
-      <Request />
+      <Request/>
       <Response>
         <Step>
           <Name>AssignMessage.AddCors</Name>
         </Step>
       </Response>
-      <Condition>(request.verb = "OPTIONS") and (request.header.origin != null) and
-        (request.header.Access-Control-Request-Method != null)</Condition>
+      <Condition>(request.verb = "OPTIONS") and (request.header.origin != null) and (request.header.Access-Control-Request-Method != null)</Condition>
     </Flow>
     <Flow name="AddPayloadToPing">
-      <Description />
-      <Request />
+      <Description/>
+      <Request/>
       <Response>
         <Step>
           <Name>AssignMessage.AddPayloadToPing</Name>
         </Step>
       </Response>
-      <Condition>(proxy.pathsuffix MatchesPath "/_ping") and ((request.verb = "GET") or
-        (request.verb = "HEAD"))</Condition>
+      <Condition>(proxy.pathsuffix MatchesPath "/_ping") and ((request.verb = "GET") or (request.verb = "HEAD"))</Condition>
     </Flow>
     <Flow name="StatusEndpoint">
       <Request>
         <Step>
-          <Condition>request.header.apikey = null or private.common.status-endpoint-api-key !=
-            request.header.apikey</Condition>
+          <Condition>request.header.apikey = null or private.common.status-endpoint-api-key != request.header.apikey</Condition>
           <Name>RaiseFault.401Unauthorized</Name>
         </Step>
         <Step>
@@ -48,8 +45,7 @@
           <Name>javascript.SetStatusResponse</Name>
         </Step>
       </Response>
-      <Condition>(proxy.pathsuffix MatchesPath "/_status") and ((request.verb = "GET") or
-        (request.verb = "HEAD"))
+      <Condition>(proxy.pathsuffix MatchesPath "/_status") and ((request.verb = "GET") or (request.verb = "HEAD"))
       </Condition>
     </Flow>
   </Flows>
@@ -65,16 +61,13 @@
     <VirtualHost>secure</VirtualHost>
   </HTTPProxyConnection>
   <RouteRule name="NoRoute">
-    <Condition>(request.verb = "OPTIONS") and (request.header.origin != null) and
-      (request.header.Access-Control-Request-Method != null)</Condition>
+    <Condition>(request.verb = "OPTIONS") and (request.header.origin != null) and (request.header.Access-Control-Request-Method != null)</Condition>
   </RouteRule>
   <RouteRule name="NoRoutePing">
-    <Condition>(proxy.pathsuffix MatchesPath "/_ping") and ((request.verb = "GET") or (request.verb
-      = "HEAD"))</Condition>
+    <Condition>(proxy.pathsuffix MatchesPath "/_ping") and ((request.verb = "GET") or (request.verb = "HEAD"))</Condition>
   </RouteRule>
   <RouteRule name="NoRouteStatus">
-    <Condition>(proxy.pathsuffix MatchesPath "/_status") and ((request.verb = "GET") or
-      (request.verb = "HEAD"))</Condition>
+    <Condition>(proxy.pathsuffix MatchesPath "/_status") and ((request.verb = "GET") or (request.verb = "HEAD"))</Condition>
   </RouteRule>
   <RouteRule name="caas-published-cohort-definitions-target">
     <TargetEndpoint>caas-published-cohort-definitions-target</TargetEndpoint>
