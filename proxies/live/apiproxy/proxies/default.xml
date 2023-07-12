@@ -4,9 +4,9 @@
       <Step>
         <Name>FlowCallout.GetEnvironmentKeyValueMapData</Name>
       </Step>
-      <Step>
+      <!-- <Step>
         <Name>AssignMessage.RemoveProxyHeaders</Name>
-      </Step>
+      </Step> -->
     </Request>
   </PreFlow>
 
