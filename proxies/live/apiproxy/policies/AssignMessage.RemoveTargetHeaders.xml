@@ -8,6 +8,6 @@
       <Header>nhsd-request-id</Header>
     </Headers>
   </Remove>
-  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
   <AssignTo createNew="false" transport="http" type="request" />
 </AssignMessage>
