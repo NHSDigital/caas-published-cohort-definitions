@@ -1,6 +1,6 @@
 <AssignMessage async="false" continueOnError="false" enabled="true"
   name="AssignMessage.RemoveTargetHeaders">
-  <DisplayName>Remove Specific Target Request Headers</DisplayName>
+  <DisplayName>remove-specific-target-request-headers</DisplayName>
   <Remove>
     <Headers>
       <Header name="x-request-id"/>
