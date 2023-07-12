@@ -3,9 +3,9 @@
   <DisplayName>Remove Specific Target Request Headers</DisplayName>
   <Remove>
     <Headers>
-      <Header>x-request-id</Header>
-      <Header>x-correlation-id</Header>
-      <Header>nhsd-request-id</Header>
+      <Header name="x-request-id"/>
+      <Header name="x-correlation-id"/>
+      <Header name="nhsd-request-id"/>
     </Headers>
   </Remove>
   <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
