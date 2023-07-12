@@ -1,12 +1,11 @@
 <AssignMessage async="false" continueOnError="false" enabled="true"
   name="AssignMessage.RemoveProxyHeaders">
-  <DisplayName>remove-specific-proxy-request-headers</DisplayName>
+  <DisplayName>remove-specific-proxy-response-headers</DisplayName>
   <Remove>
     <Headers>
       <Header name="x-request-id"/>
-      <Header name="nhsd-request-id"/>
     </Headers>
   </Remove>
   <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-  <AssignTo createNew="false" transport="http" type="request" />
+  <AssignTo createNew="false" transport="http" type="reponse" />
 </AssignMessage>
