@@ -20,9 +20,11 @@ def test_wait_for_ping(nhsd_apim_proxy_url):
     resp = requests.get(f"{nhsd_apim_proxy_url}/_ping")
     deployed_commitId = resp.json().get("commitId")
 
-    while (deployed_commitId != getenv('SOURCE_COMMIT_ID')
-            and retries <= 30
-            and resp.status_code == 200):
+    while (
+        deployed_commitId != getenv("SOURCE_COMMIT_ID")
+        and retries <= 30
+        and resp.status_code == 200
+    ):
         resp = requests.get(f"{nhsd_apim_proxy_url}/_ping")
         deployed_commitId = resp.json().get("commitId")
         retries += 1
@@ -32,7 +34,7 @@ def test_wait_for_ping(nhsd_apim_proxy_url):
     elif retries >= 30:
         pytest.fail("Timeout Error - max retries")
 
-    assert deployed_commitId == getenv('SOURCE_COMMIT_ID')
+    assert deployed_commitId == getenv("SOURCE_COMMIT_ID")
 
 
 @pytest.mark.smoketest
@@ -47,14 +49,20 @@ def test_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
 @pytest.mark.smoketest
 def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
     retries = 0
-    resp = requests.get(f"{nhsd_apim_proxy_url}/_status", headers=status_endpoint_auth_headers)
+    resp = requests.get(
+        f"{nhsd_apim_proxy_url}/_status", headers=status_endpoint_auth_headers
+    )
     deployed_commitId = resp.json().get("commitId")
 
-    while (deployed_commitId != getenv('SOURCE_COMMIT_ID')
-            and retries <= 30
-            and resp.status_code == 200
-            and resp.json().get("version")):
-        resp = requests.get(f"{nhsd_apim_proxy_url}/_status", headers=status_endpoint_auth_headers)
+    while (
+        deployed_commitId != getenv("SOURCE_COMMIT_ID")
+        and retries <= 30
+        and resp.status_code == 200
+        and resp.json().get("version")
+    ):
+        resp = requests.get(
+            f"{nhsd_apim_proxy_url}/_status", headers=status_endpoint_auth_headers
+        )
         deployed_commitId = resp.json().get("commitId")
         retries += 1
 
@@ -65,14 +73,16 @@ def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
     elif not resp.json().get("version"):
         pytest.fail("version not found")
 
-    assert deployed_commitId == getenv('SOURCE_COMMIT_ID')
+    assert deployed_commitId == getenv("SOURCE_COMMIT_ID")
 
 
 @pytest.mark.smoketest
 def test_for_connection_status(nhsd_apim_proxy_url):
     target_server_headers = {
         "Content-Type": "application/json",
-        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C"
+        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
+        "X-Correlation-ID": "df728790-43d9-4e90-ad34-b3c8268a6674",
+        "X-Request-ID": "b452ba10-6783-449d-b23e-da146ea27140",
     }
 
     request_body = {
@@ -82,9 +92,42 @@ def test_for_connection_status(nhsd_apim_proxy_url):
             "... on ErrorDescription { code correlationId errorDescription } }}"
         )
     }
+
     resp = requests.post(
-        f"{nhsd_apim_proxy_url}/api",
-        headers=target_server_headers,
-        json=request_body
+        f"{nhsd_apim_proxy_url}/api", headers=target_server_headers, json=request_body
     )
     assert resp.status_code == 200
+
+
+@pytest.mark.smoketest
+def test_for_response_headers(nhsd_apim_proxy_url):
+    target_server_headers = {
+        "Content-Type": "application/json",
+        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
+        "X-Correlation-ID": "df728790-43d9-4e90-ad34-b3c8268a6674",
+        "X-Request-ID": "b452ba10-6783-449d-b23e-da146ea27140",
+    }
+
+    request_body = {
+        "query": (
+            "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
+            "{ ... on Cohorts { cohorts { urlSlug } } "
+            "... on ErrorDescription { code correlationId errorDescription } }}"
+        )
+    }
+
+    resp = requests.post(
+        f"{nhsd_apim_proxy_url}/api", headers=target_server_headers, json=request_body
+    )
+    print(f"The response headers are: {resp.headers}")
+    assert (
+        "X-Correlation-ID" in resp.headers
+    ), "Header 'X-Correlation-ID' not found in response"
+    assert "X-Request-ID" in resp.headers, "Header 'X-Request-ID' not found in response"
+
+    assert (
+        resp.headers["X-Correlation-ID"] == "df728790-43d9-4e90-ad34-b3c8268a6674"
+    ), "Unexpected value for 'X-Correlation-ID'"
+    assert (
+        resp.headers["X-Request-ID"] == "b452ba10-6783-449d-b23e-da146ea27140"
+    ), "Unexpected value for 'X-Request-ID'"

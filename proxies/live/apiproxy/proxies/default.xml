@@ -5,11 +5,6 @@
         <Name>FlowCallout.GetEnvironmentKeyValueMapData</Name>
       </Step>
     </Request>
-    <Response>
-      <Step>
-        <Name>AssignMessage.RemoveProxyHeaders</Name>
-      </Step>
-    </Response>
   </PreFlow>
 
   <Flows>
