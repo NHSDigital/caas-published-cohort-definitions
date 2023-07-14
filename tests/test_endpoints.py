@@ -119,7 +119,7 @@ def test_for_response_headers(nhsd_apim_proxy_url):
     resp = requests.post(
         f"{nhsd_apim_proxy_url}/api", headers=target_server_headers, json=request_body
     )
-    print(f"The response headers are: {resp.headers}")
+
     assert (
         "X-Correlation-ID" in resp.headers
     ), "Header 'X-Correlation-ID' not found in response"
