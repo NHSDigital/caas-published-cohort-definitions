@@ -1,0 +1,13 @@
+<AssignMessage async="false" continueOnError="false" enabled="true"
+  name="AssignMessage.RemoveTargetHeaders">
+  <DisplayName>remove-specific-target-request-headers</DisplayName>
+  <Remove>
+    <Headers>
+      <Header name="x-request-id"/>
+      <Header name="x-correlation-id"/>
+      <Header name="nhsd-request-id"/>
+    </Headers>
+  </Remove>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request" />
+</AssignMessage>
