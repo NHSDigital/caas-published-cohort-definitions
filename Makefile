@@ -68,6 +68,11 @@ smoketest:
 	--junitxml=smoketest-report.xml \
 	-m smoketest
 
+functionaltest:
+	$(TEST_CMD) \
+	--junitxml=functionaltest-report.xml \
+	-m functionaltest
+
 test:
 	$(TEST_CMD) \
 	--junitxml=test-report.xml \

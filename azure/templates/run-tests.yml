@@ -8,6 +8,9 @@ parameters:
   - name: smoketest_command
     type: string
     default: 'make smoketest'
+ - name: functionaltest_command
+    type: string
+    default: 'make functionaltest'
 
 steps:
   - bash: |
@@ -51,4 +54,20 @@ steps:
       condition: always()
       inputs:
         testResultsFiles: '$(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/smoketest-report.xml'
+        failTaskOnFailedTests: true
+ - ${{ else }}:
+    - bash: |
+        export PROXY_NAME="$(FULLY_QUALIFIED_SERVICE_NAME)"
+        export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
+        export APIGEE_APP_ID="MY APP ID"
+        export STATUS_ENDPOINT_API_KEY="$(STATUS_ENDPOINT_API_KEY)"
+        export SOURCE_COMMIT_ID="$(Build.SourceVersion)"
+        ${{ parameters.functionaltest_command }}
+      workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
+      displayName: Run functionaltest
+    - task: PublishTestResults@2
+      displayName: 'Publish functionaltest results'
+      condition: always()
+      inputs:
+        testResultsFiles: '$(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/functionaltest-report.xml'
         failTaskOnFailedTests: true
