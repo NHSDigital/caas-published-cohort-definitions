@@ -5,8 +5,7 @@ for more ideas on how to test the authorization of your API.
 """
 import requests
 import pytest
-from lib import Assertions, Generators
-from lib.constants import *
+from lib.constants import CORRELATION_IDS
 
 
 @pytest.mark.functionaltest
@@ -22,7 +21,8 @@ def test_for_getall_query(nhsd_apim_proxy_url, correlation_id):
 
     request_body = {
         "query": (
-            "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll ""{ authors, clinicalAtRiskGroupsText, id, name } } "
+            "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
+            "{ authors, clinicalAtRiskGroupsText, id, name } }"
         )
     }
 
@@ -44,7 +44,8 @@ def test_for_urlslug_query(nhsd_apim_proxy_url, correlation_id):
     }
 
     request_body = {
-        "query": "query Cohort($urlSlug: String!) { PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug) { ... on Cohort { urlSlug}}}",
+        "query": "query Cohort($urlSlug: String!) { PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug)"
+        "{ ... on Cohort { urlSlug}}}",
         "variables": {
             "urlSlug": "covid-19-autumn-booster-vaccinations-2022-to-2023-v1"
         }

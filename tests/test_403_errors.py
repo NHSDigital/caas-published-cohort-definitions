@@ -5,8 +5,8 @@ for more ideas on how to test the authorization of your API.
 """
 import requests
 import pytest
-from lib import Assertions, Generators
-from lib.constants import *
+from lib import Assertions
+from lib.constants import CORRELATION_IDS, METHODS
 
 FORBIDDEN_TOKEN = {
     "Authorization": "Bearer ClientNotRecognised"
