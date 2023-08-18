@@ -20,5 +20,10 @@ smoketest-report.xml
 env
 .dir-locals.el
 *.pyc
-
+*-report.xml
+.env
+*.key
+*.pem
+sandbox/coverage
+sandbox/.nyc_output
 /.vscode
