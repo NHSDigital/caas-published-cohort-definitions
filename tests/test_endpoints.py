@@ -34,7 +34,7 @@ def test_wait_for_ping(nhsd_apim_proxy_url):
     elif retries >= 30:
         pytest.fail("Timeout Error - max retries")
 
-    assert deployed_commitId == 'aff25687291bac2d803b0d98398aab8d8c5b3bf1'
+    assert deployed_commitId == getenv("SOURCE_COMMIT_ID")
 
 
 @pytest.mark.smoketest
@@ -88,8 +88,8 @@ def test_for_connection_status(nhsd_apim_proxy_url):
     request_body = {
         "query": (
             "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
-            "{ authors, clinicalAtRiskGroupsText, id, name } } "
-            # "... on ErrorDescription { code correlationId errorDescription } }}"
+            "{ ... on Cohorts { cohorts { urlSlug } } "
+            "... on ErrorDescription { code correlationId errorDescription } }}"
         )
     }
 
@@ -99,7 +99,7 @@ def test_for_connection_status(nhsd_apim_proxy_url):
     assert resp.status_code == 200
 
 
-@ pytest.mark.smoketest
+@pytest.mark.smoketest
 def test_for_response_headers(nhsd_apim_proxy_url):
     target_server_headers = {
         "Content-Type": "application/json",
