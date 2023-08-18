@@ -56,4 +56,5 @@ def test_for_urlslug_query(nhsd_apim_proxy_url, correlation_id):
     )
 
     respJson = resp.json()
-    assert respJson['data']['PublishedCohortLibraryGetBySlugName']['urlSlug'] == 'covid-19-autumn-booster-vaccinations-2022-to-2023-v1'
+    assert (respJson['data']['PublishedCohortLibraryGetBySlugName']['urlSlug'] ==
+            'covid-19-autumn-booster-vaccinations-2022-to-2023-v1')

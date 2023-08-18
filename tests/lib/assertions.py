@@ -1,4 +1,4 @@
-from .constants import *
+from .constants import CORS_ALLOW_HEADERS, CORS_MAX_AGE, CORS_EXPOSE_HEADERS, CORS_METHODS
 
 
 class Assertions():
