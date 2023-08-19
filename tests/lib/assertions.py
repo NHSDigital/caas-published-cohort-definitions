@@ -3,17 +3,6 @@ from .constants import CORS_ALLOW_HEADERS, CORS_MAX_AGE, CORS_EXPOSE_HEADERS, CO
 
 class Assertions():
     @staticmethod
-    def assert_201_response(resp, messageBatchReference):
-        assert resp.status_code == 201
-
-        response = resp.json().get("data")
-        assert response.get("type") == "MessageBatch"
-        assert response.get("id") is not None
-        assert response.get("id") != ""
-        assert response.get("attributes").get("messageBatchReference") is not None
-        assert response.get("attributes").get("messageBatchReference") == messageBatchReference
-
-    @staticmethod
     def assert_error_with_optional_correlation_id(resp, code, correlation_id):
         assert resp.status_code == code
         assert resp.headers.get("X-Correlation-Id") == correlation_id
