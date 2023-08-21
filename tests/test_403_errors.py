@@ -25,5 +25,6 @@ def test_403_forbidden(nhsd_apim_proxy_url, correlation_id, method):
     Assertions.assert_error_with_optional_correlation_id(
         resp,
         403,
+        None,
         correlation_id
     )

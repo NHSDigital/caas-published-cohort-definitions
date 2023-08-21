@@ -88,8 +88,19 @@ def test_for_connection_status(nhsd_apim_proxy_url):
     request_body = {
         "query": (
             "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
-            "{ ... on Cohorts { cohorts { urlSlug } } "
-            "... on ErrorDescription { code correlationId errorDescription } }}"
+            "{ authors,"
+            "clinicalAtRiskGroupsText,"
+            "id,"
+            "commissioner,"
+            "demographicsText,"
+            "description,"
+            "disclaimerText,"
+            "fixedDateReference,"
+            "name,"
+            "purpose,"
+            "shortName,"
+            "urlSlug,"
+            "summary } }"
         )
     }
 
@@ -111,8 +122,19 @@ def test_for_response_headers(nhsd_apim_proxy_url):
     request_body = {
         "query": (
             "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
-            "{ ... on Cohorts { cohorts { urlSlug } } "
-            "... on ErrorDescription { code correlationId errorDescription } }}"
+            "{ authors,"
+            "clinicalAtRiskGroupsText,"
+            "id,"
+            "commissioner,"
+            "demographicsText,"
+            "description,"
+            "disclaimerText,"
+            "fixedDateReference,"
+            "name,"
+            "purpose,"
+            "shortName,"
+            "urlSlug,"
+            "summary } }"
         )
     }
 

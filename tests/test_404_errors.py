@@ -10,7 +10,6 @@ from lib.constants import CORRELATION_IDS, METHODS
 
 
 @pytest.mark.functionaltest
-@pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
 @pytest.mark.parametrize("correlation_id", CORRELATION_IDS)
 @pytest.mark.parametrize("method", METHODS)
 def test_404_not_found(nhsd_apim_proxy_url, nhsd_apim_auth_headers, correlation_id, method):
@@ -22,5 +21,6 @@ def test_404_not_found(nhsd_apim_proxy_url, nhsd_apim_auth_headers, correlation_
     Assertions.assert_error_with_optional_correlation_id(
         resp,
         404,
+        None,
         correlation_id
     )

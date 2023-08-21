@@ -9,7 +9,6 @@ from lib.constants import CORRELATION_IDS
 
 
 @pytest.mark.functionaltest
-@pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
 @pytest.mark.parametrize("correlation_id", CORRELATION_IDS)
 def test_for_getall_query(nhsd_apim_proxy_url, correlation_id):
     target_server_headers = {
@@ -22,13 +21,40 @@ def test_for_getall_query(nhsd_apim_proxy_url, correlation_id):
     request_body = {
         "query": (
             "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
-            "{ authors, clinicalAtRiskGroupsText, id, name } }"
+            "{ authors,"
+            "clinicalAtRiskGroupsText,"
+            "id,"
+            "commissioner,"
+            "demographicsText,"
+            "description,"
+            "disclaimerText,"
+            "fixedDateReference,"
+            "name,"
+            "purpose,"
+            "shortName,"
+            "urlSlug,"
+            "summary } }"
         )
     }
 
     resp = requests.post(
         f"{nhsd_apim_proxy_url}/api", headers=target_server_headers, json=request_body
     )
+
+    dct = resp.json()
+
+    def get_all_key(dct, lst):
+        for k, v in dct.items():
+            lst.append(k)
+            if isinstance(v, list):
+                for d in v:
+                    get_all_key(d, lst)
+            elif isinstance(v, dict):
+                get_all_key(v, lst)
+
+    res = []
+    get_all_key(dct, res)
+    print(res)
 
     assert resp.status_code == 200
 

@@ -1,10 +1,16 @@
-from .constants import CORS_ALLOW_HEADERS, CORS_MAX_AGE, CORS_EXPOSE_HEADERS, CORS_METHODS
+from .constants import *
 
 
 class Assertions():
     @staticmethod
-    def assert_error_with_optional_correlation_id(resp, code, correlation_id):
+    def assert_error_with_optional_correlation_id(resp, code, error, correlation_id):
         assert resp.status_code == code
+
+        if error is not None:
+            # ensure that all errors contain an identifier
+            response_errors = resp.json().get("errors")
+            assert error == response_errors
+
         assert resp.headers.get("X-Correlation-Id") == correlation_id
 
     @staticmethod
