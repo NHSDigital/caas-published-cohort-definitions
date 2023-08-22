@@ -10,11 +10,6 @@
   "author": "NHS Digital",
   "license": "MIT",
   "homepage": "https://github.com/NHSDigital/caas-published-cohort-definitions",
-  "dependencies": {
-    "pip": "^0.0.1",
-    "poetry": "^0.6.28",
-    "python": "^0.0.4"
-  },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.5.1",
     "apigeetool": "^0.5.4",
