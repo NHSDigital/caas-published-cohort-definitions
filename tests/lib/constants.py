@@ -1,3 +1,8 @@
+"""
+The constants from this file will be useful once CAAS-1623 has been implemented
+also when sandbox environment has been created
+"""
+
 INT_URL = "https://api.service.nhs.uk/caas-published-cohort-definitions"
 CORS_METHODS = "GET, PUT, POST, PATCH, DELETE"
 CORS_MAX_AGE = "3628800"

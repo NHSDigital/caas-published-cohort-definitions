@@ -1,29 +1,11 @@
+"""
+The functions from this file will be useful once CAAS-1623 has been implemented
+"""
 import uuid
 from .constants import *
 
 
 class Generators():
-    @staticmethod
-    def generate_valid_create_message_batch_body(prod=False):
-        return {
-            "data": {
-                "type": "MessageBatch",
-                "attributes": {
-                    "routingPlanId": VALID_ROUTING_PLAN_ID_PROD if prod else VALID_ROUTING_PLAN_ID_SANDBOX,
-                    "messageBatchReference": str(uuid.uuid1()),
-                    "messages": [
-                        {
-                            "messageReference": "703b8008-545d-4a04-bb90-1f2946ce1575",
-                            "recipient": {
-                                "nhsNumber": "1234567890",
-                                "dateOfBirth": "1982-03-17"
-                            },
-                            "personalisation": {}
-                        }
-                    ]
-                }
-            }
-        }
 
     @staticmethod
     def generate_target_server_headers(correlation_id):
@@ -99,33 +81,6 @@ class Generators():
         return Generators.generate_error(ERROR_MISSING_ROUTING_PLAN_TEMPLATE, source={
             "pointer": "/data/attributes/routingPlanId"
         })
-
-    @staticmethod
-    def generate_duplicate_routing_plan_template_error():
-        return Generators.generate_error(ERROR_DUPLICATE_ROUTING_PLAN_TEMPLATE, source={
-            "pointer": "/data/attributes/routingPlanId"
-        }, meta={"duplicateTemplates": [
-            {
-                "name": "EMAIL_TEMPLATE",
-                "type": "EMAIL"
-            },
-            {
-                "name": "SMS_TEMPLATE",
-                "type": "SMS"
-            },
-            {
-                "name": "LETTER_TEMPLATE",
-                "type": "LETTER"
-            },
-            {
-                "name": "LETTER_PDF_TEMPLATE",
-                "type": "LETTER_PDF"
-            },
-            {
-                "name": "NHSAPP_TEMPLATE",
-                "type": "NHSAPP"
-            }
-        ]})
 
     @staticmethod
     def generate_not_found_error():
