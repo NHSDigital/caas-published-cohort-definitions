@@ -5,82 +5,33 @@ for more ideas on how to test the authorization of your API.
 """
 import requests
 import pytest
+import json
 from lib.constants import CORRELATION_IDS
+from lib import Generators
+from lib.api_helpers import published_cohort_library_get_all_request_body, get_by_slug_name_request_body, published_library_get_all_json_file_location
 
 
 @pytest.mark.functionaltest
-@pytest.mark.parametrize("correlation_id", CORRELATION_IDS)
-def test_for_getall_query(nhsd_apim_proxy_url, correlation_id):
-    target_server_headers = {
-        "Content-Type": "application/json",
-        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
-        "X-Correlation-ID": correlation_id,
-        "X-Request-ID": "b452ba10-6783-449d-b23e-da146ea27140",
-    }
-
-    request_body = {
-        "query": (
-            "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
-            "{ authors,"
-            "clinicalAtRiskGroupsText,"
-            "id,"
-            "commissioner,"
-            "demographicsText,"
-            "description,"
-            "disclaimerText,"
-            "fixedDateReference,"
-            "name,"
-            "purpose,"
-            "shortName,"
-            "urlSlug,"
-            "summary } }"
-        )
-    }
-
-    resp = requests.post(
-        f"{nhsd_apim_proxy_url}/api", headers=target_server_headers, json=request_body
+def test_for_getall_query(nhsd_apim_proxy_url):
+    published_cohort_definitions_response = requests.post(
+        f"{nhsd_apim_proxy_url}/api", headers=Generators.generate_target_server_headers("76491414-d0cf-4655-ae20-a4d1368472f3"), json=published_cohort_library_get_all_request_body
     )
 
-    dct = resp.json()
+    published_cohort_definitions_Response_json = json.dumps(published_cohort_definitions_response.json(), indent=1)
+    expected_response_published_library_get_all = json.dumps(
+        json.load(published_library_get_all_json_file_location), indent=1)
 
-    def get_all_key(dct, lst):
-        for k, v in dct.items():
-            lst.append(k)
-            if isinstance(v, list):
-                for d in v:
-                    get_all_key(d, lst)
-            elif isinstance(v, dict):
-                get_all_key(v, lst)
-
-    res = []
-    get_all_key(dct, res)
-    print(res)
-
-    assert resp.status_code == 200
+    published_cohort_definitions_response.status_code == 200
+    assert expected_response_published_library_get_all == published_cohort_definitions_Response_json
 
 
 @pytest.mark.functionaltest
 @pytest.mark.parametrize("correlation_id", CORRELATION_IDS)
 def test_for_urlslug_query(nhsd_apim_proxy_url, correlation_id):
-    target_server_headers = {
-        "Content-Type": "application/json",
-        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
-        "X-Correlation-ID": correlation_id,
-        "X-Request-ID": "b452ba10-6783-449d-b23e-da146ea27140",
-    }
-
-    request_body = {
-        "query": "query Cohort($urlSlug: String!) { PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug)"
-        "{ ... on Cohort { urlSlug}}}",
-        "variables": {
-            "urlSlug": "covid-19-autumn-booster-vaccinations-2022-to-2023-v1"
-        }
-    }
-
-    resp = requests.post(
-        f"{nhsd_apim_proxy_url}/api", headers=target_server_headers, json=request_body
+    url_slug_query_response = requests.post(
+        f"{nhsd_apim_proxy_url}/api", headers=Generators.generate_target_server_headers(correlation_id), json=get_by_slug_name_request_body
     )
 
-    respJson = resp.json()
-    assert (respJson['data']['PublishedCohortLibraryGetBySlugName']['urlSlug'] ==
-            'covid-19-autumn-booster-vaccinations-2022-to-2023-v1')
+    url_slug_query_response_json = url_slug_query_response.json()
+    assert (url_slug_query_response_json['data']['PublishedCohortLibraryGetBySlugName']['urlSlug'] ==
+            'flu-22-to-23')

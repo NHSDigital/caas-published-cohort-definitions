@@ -6,6 +6,7 @@ for more ideas on how to test the authorization of your API.
 import requests
 import pytest
 from os import getenv
+from lib import Generators
 
 
 @pytest.mark.smoketest
@@ -78,12 +79,6 @@ def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
 
 @pytest.mark.smoketest
 def test_for_connection_status(nhsd_apim_proxy_url):
-    target_server_headers = {
-        "Content-Type": "application/json",
-        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
-        "X-Correlation-ID": "df728790-43d9-4e90-ad34-b3c8268a6674",
-        "X-Request-ID": "b452ba10-6783-449d-b23e-da146ea27140",
-    }
 
     request_body = {
         "query": (
@@ -105,19 +100,13 @@ def test_for_connection_status(nhsd_apim_proxy_url):
     }
 
     resp = requests.post(
-        f"{nhsd_apim_proxy_url}/api", headers=target_server_headers, json=request_body
+        f"{nhsd_apim_proxy_url}/api", headers=Generators.generate_target_server_headers("df728790-43d9-4e90-ad34-b3c8268a6674"), json=request_body
     )
     assert resp.status_code == 200
 
 
 @pytest.mark.smoketest
 def test_for_response_headers(nhsd_apim_proxy_url):
-    target_server_headers = {
-        "Content-Type": "application/json",
-        "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
-        "X-Correlation-ID": "df728790-43d9-4e90-ad34-b3c8268a6674",
-        "X-Request-ID": "b452ba10-6783-449d-b23e-da146ea27140",
-    }
 
     request_body = {
         "query": (
@@ -139,7 +128,7 @@ def test_for_response_headers(nhsd_apim_proxy_url):
     }
 
     resp = requests.post(
-        f"{nhsd_apim_proxy_url}/api", headers=target_server_headers, json=request_body
+        f"{nhsd_apim_proxy_url}/api", headers=Generators.generate_target_server_headers("df728790-43d9-4e90-ad34-b3c8268a6674"), json=request_body
     )
 
     assert (

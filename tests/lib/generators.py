@@ -26,6 +26,15 @@ class Generators():
         }
 
     @staticmethod
+    def generate_target_server_headers(correlation_id):
+        return {
+            "Content-Type": "application/json",
+            "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
+            "X-Correlation-ID": correlation_id,
+            "X-Request-ID": "b452ba10-6783-449d-b23e-da146ea27140",
+        }
+
+    @staticmethod
     def generate_invalid_value_error(pointer):
         return Generators.generate_error(ERROR_INVALID_VALUE, source={
             "pointer": pointer

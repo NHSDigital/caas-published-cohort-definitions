@@ -1,0 +1,21 @@
+{
+  "data": {
+   "PublishedCohortLibraryGetAll": [
+    {
+     "authors": "[\"Author name\"]",
+     "clinicalAtRiskGroupsText": "The condition groups listed below provide detailed information on who is included and excluded from the digital cohort.\n\nThe list is not exhaustive, and decisions should be based on clinical judgement.\n\nThe clinical at-risk groups are:",
+     "id": "220de6d4-62f8-4757-8f27-177817ce0085",
+     "commissioner": "NHS-E vaccination programme's Tech and Data workstream, delivered by NHS Digital.",
+     "demographicsText": "All people aged 6 months or older that are in the clinical risk groups shown in table 19.4, chapter 19 of the Green Book.",
+     "description": "The flu vaccination is recommended for all people over 6 months of age. It provides protection to those who are at higher risk of serious illness from flu.",
+     "disclaimerText": "The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book, chapter 19 and associated assumptions.",
+     "fixedDateReference": null,
+     "name": "Flu vaccinations 2022 to 2023",
+     "purpose": "Direct Care",
+     "shortName": "flu vaccination cohort",
+     "urlSlug": "flu-22-to-23",
+     "summary": "NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the 2022 to 2023 winter flu vaccination.\nTo be eligible, they needed to be:\n- 6 months of age or older\n- in defined clinical risk groups shown in the [Green Book, chapter 19](https://www.gov.uk/government/publications/influenza-the-green-book-chapter-19)\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\nThe data collected helped to:\n- contact or remind people to receive their flu vaccination between 1 September 2022 and 31 March 2023\n- focus protection on those at a clinical risk of flu\n- monitor the number of people who received the flu vaccination"
+    }
+   ]
+  }
+ }
