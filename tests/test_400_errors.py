@@ -5,8 +5,8 @@ for more ideas on how to test the authorization of your API.
 """
 import requests
 import pytest
-from lib.constants import CORRELATION_IDS
 from lib import Generators, Assertions
+from lib.constants import CORRELATION_IDS
 
 
 @pytest.mark.functionaltest
@@ -21,7 +21,8 @@ def test_data_invalid(nhsd_apim_proxy_url, correlation_id):
     }
 
     error_response = requests.post(
-        f"{nhsd_apim_proxy_url}/api", headers=Generators.generate_target_server_headers(correlation_id), json=invalid_request_body
+        f"{nhsd_apim_proxy_url}/api",
+        headers=Generators.generate_target_server_headers(correlation_id), json=invalid_request_body
     )
 
     Assertions.assert_error_with_optional_correlation_id(
