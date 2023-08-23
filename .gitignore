@@ -21,7 +21,6 @@ smoketest-report.xml
 .dir-locals.el
 *.pyc
 *-report.xml
-.env
 *.key
 *.pem
 sandbox/coverage
