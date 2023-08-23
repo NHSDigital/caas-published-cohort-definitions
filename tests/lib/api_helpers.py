@@ -1,5 +1,3 @@
-from lib.constants import URL_SLUG
-
 published_cohort_library_get_all_request_body = {
     "query": (
         "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
@@ -19,13 +17,16 @@ published_cohort_library_get_all_request_body = {
     )
 }
 
-get_by_slug_name_request_body = {
-    "query": "query Cohort($urlSlug: String!) { PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug)"
-    "{ ... on Cohort { urlSlug}}}",
-    "variables": {
-        "urlSlug": URL_SLUG
+
+def get_by_slug_name_request_body(url_slug):
+    return {
+        "query": "query Cohort($urlSlug: String!) { PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug)"
+        "{ ... on Cohort { urlSlug}}}",
+        "variables": {
+            "urlSlug": url_slug
+        }
     }
-}
+
 
 published_cohort_library_get_all_expected_response = open(
     './tests/lib/published_cohort_library_get_all_expected_results.json')

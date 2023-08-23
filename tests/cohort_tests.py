@@ -7,7 +7,7 @@ import requests
 import pytest
 import json
 from lib import Generators
-from lib.constants import CORRELATION_IDS
+from lib.constants import CORRELATION_IDS, URL_SLUG
 from lib.api_helpers import *
 
 
@@ -30,9 +30,11 @@ def test_for_getall_query(nhsd_apim_proxy_url):
 @pytest.mark.functionaltest
 @pytest.mark.parametrize("correlation_id", CORRELATION_IDS)
 def test_for_urlslug_query(nhsd_apim_proxy_url, correlation_id):
+
     url_slug_query_response = requests.post(
         f"{nhsd_apim_proxy_url}/api",
-        headers=Generators.generate_target_server_headers(correlation_id), json=get_by_slug_name_request_body
+        headers=Generators.generate_target_server_headers(correlation_id), json=get_by_slug_name_request_body(URL_SLUG)
+
     )
 
     url_slug_data = url_slug_query_response.json()['data']['PublishedCohortLibraryGetBySlugName']
