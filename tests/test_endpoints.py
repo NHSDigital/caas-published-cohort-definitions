@@ -7,6 +7,7 @@ import requests
 import pytest
 from os import getenv
 from lib import Generators
+from lib.api_helpers import *
 
 
 @pytest.mark.smoketest
@@ -80,28 +81,9 @@ def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
 @pytest.mark.smoketest
 def test_for_connection_status(nhsd_apim_proxy_url):
 
-    request_body = {
-        "query": (
-            "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
-            "{ authors,"
-            "clinicalAtRiskGroupsText,"
-            "id,"
-            "commissioner,"
-            "demographicsText,"
-            "description,"
-            "disclaimerText,"
-            "fixedDateReference,"
-            "name,"
-            "purpose,"
-            "shortName,"
-            "urlSlug,"
-            "summary } }"
-        )
-    }
-
     resp = requests.post(
         f"{nhsd_apim_proxy_url}/api",
-        headers=Generators.generate_target_server_headers("df728790-43d9-4e90-ad34-b3c8268a6674"), json=request_body
+        headers=Generators.generate_target_server_headers("df728790-43d9-4e90-ad34-b3c8268a6674"), json=published_cohort_library_get_all_request_body
     )
     assert resp.status_code == 200
 
@@ -109,28 +91,9 @@ def test_for_connection_status(nhsd_apim_proxy_url):
 @pytest.mark.smoketest
 def test_for_response_headers(nhsd_apim_proxy_url):
 
-    request_body = {
-        "query": (
-            "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
-            "{ authors,"
-            "clinicalAtRiskGroupsText,"
-            "id,"
-            "commissioner,"
-            "demographicsText,"
-            "description,"
-            "disclaimerText,"
-            "fixedDateReference,"
-            "name,"
-            "purpose,"
-            "shortName,"
-            "urlSlug,"
-            "summary } }"
-        )
-    }
-
     resp = requests.post(
         f"{nhsd_apim_proxy_url}/api",
-        headers=Generators.generate_target_server_headers("df728790-43d9-4e90-ad34-b3c8268a6674"), json=request_body
+        headers=Generators.generate_target_server_headers("df728790-43d9-4e90-ad34-b3c8268a6674"), json=published_cohort_library_get_all_request_body
     )
 
     assert (

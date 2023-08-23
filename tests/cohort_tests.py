@@ -21,7 +21,7 @@ def test_for_getall_query(nhsd_apim_proxy_url):
 
     published_cohort_definitions_Response_json = json.dumps(published_cohort_definitions_response.json(), indent=1)
     expected_response_published_library_get_all = json.dumps(
-        json.load(published_library_get_all_json_file_location), indent=1)
+        json.load(published_cohort_library_get_all_expected_response), indent=1)
 
     published_cohort_definitions_response.status_code == 200
     assert expected_response_published_library_get_all == published_cohort_definitions_Response_json
@@ -35,6 +35,5 @@ def test_for_urlslug_query(nhsd_apim_proxy_url, correlation_id):
         headers=Generators.generate_target_server_headers(correlation_id), json=get_by_slug_name_request_body
     )
 
-    url_slug_query_response_json = url_slug_query_response.json()
-    assert (url_slug_query_response_json['data']['PublishedCohortLibraryGetBySlugName']['urlSlug'] ==
-            'flu-22-to-23')
+    url_slug_data = url_slug_query_response.json()['data']['PublishedCohortLibraryGetBySlugName']
+    assert url_slug_data['urlSlug'] == 'flu-22-to-23'

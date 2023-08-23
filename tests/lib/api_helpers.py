@@ -1,3 +1,5 @@
+from lib.constants import URL_SLUG
+
 published_cohort_library_get_all_request_body = {
     "query": (
         "query PublishedCohortLibraryGetAll { PublishedCohortLibraryGetAll "
@@ -21,8 +23,9 @@ get_by_slug_name_request_body = {
     "query": "query Cohort($urlSlug: String!) { PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug)"
     "{ ... on Cohort { urlSlug}}}",
     "variables": {
-        "urlSlug": "flu-22-to-23"
+        "urlSlug": URL_SLUG
     }
 }
 
-published_library_get_all_json_file_location = open('./tests/lib/publishedCohortLibraryGetAll.json')
+published_cohort_library_get_all_expected_response = open(
+    './tests/lib/published_cohort_library_get_all_expected_results.json')
