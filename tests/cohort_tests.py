@@ -10,8 +10,7 @@ from lib import Generators
 from lib.constants import CORRELATION_IDS, URL_SLUG
 from lib.api_helpers import *
 
-expected_response_published_library_get_all = json.dumps(
-    json.load(published_cohort_library_get_all_expected_response), indent=1)
+expected_response_published_library_get_all = json.load(published_cohort_library_get_all_expected_response)
 
 
 @pytest.mark.functionaltest
@@ -23,7 +22,7 @@ def test_for_getall_query(nhsd_apim_proxy_url, correlation_id):
         json=published_cohort_library_get_all_request_body
     )
 
-    published_cohort_definitions_Response_json = json.dumps(published_cohort_definitions_response.json(), indent=1)
+    published_cohort_definitions_Response_json = published_cohort_definitions_response.json()
 
     published_cohort_definitions_response.status_code == 200
     assert expected_response_published_library_get_all == published_cohort_definitions_Response_json
