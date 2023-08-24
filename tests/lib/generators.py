@@ -1,7 +1,7 @@
 """
 The functions from this file will be useful once CAAS-1623 has been implemented
 """
-import uuid
+import os
 from .constants import *
 
 
@@ -11,7 +11,7 @@ class Generators():
     def generate_target_server_headers(correlation_id):
         return {
             "Content-Type": "application/json",
-            "x-api-key": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
+            "x-api-key": os.environ["API_KEY"],
             "X-Correlation-ID": correlation_id,
             "X-Request-ID": "b452ba10-6783-449d-b23e-da146ea27140",
         }

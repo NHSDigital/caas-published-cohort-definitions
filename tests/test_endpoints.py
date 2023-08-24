@@ -83,7 +83,8 @@ def test_for_connection_status(nhsd_apim_proxy_url):
 
     resp = requests.post(
         f"{nhsd_apim_proxy_url}/api",
-        headers=Generators.generate_target_server_headers("df728790-43d9-4e90-ad34-b3c8268a6674"), json=published_cohort_library_get_all_request_body
+        headers=Generators.generate_target_server_headers("df728790-43d9-4e90-ad34-b3c8268a6674"),
+        json=published_cohort_library_get_all_request_body
     )
     assert resp.status_code == 200
 
@@ -93,7 +94,8 @@ def test_for_response_headers(nhsd_apim_proxy_url):
 
     resp = requests.post(
         f"{nhsd_apim_proxy_url}/api",
-        headers=Generators.generate_target_server_headers("df728790-43d9-4e90-ad34-b3c8268a6674"), json=published_cohort_library_get_all_request_body
+        headers=Generators.generate_target_server_headers("df728790-43d9-4e90-ad34-b3c8268a6674"),
+        json=published_cohort_library_get_all_request_body
     )
 
     assert (
