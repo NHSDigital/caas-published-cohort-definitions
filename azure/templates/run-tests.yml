@@ -13,6 +13,16 @@ parameters:
       default: "make functionaltest"
 
 steps:
+    - template: "azure/components/aws-assume-role.yml@common"
+      parameters:
+        role: "auto-ops"
+        profile: "apm_ptl"
+
+    - template: "azure/components/get-aws-secrets-and-ssm-params.yml@common"
+      parameters:
+        secret_ids:
+        - ptl/api-deployment/caas-published-cohort-definitions/INTEGRATION_API_KEY
+
     - bash: |
           make install-python
       workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
@@ -40,12 +50,17 @@ steps:
     - ${{ if not(parameters.full) }}:
           # In order to run tests in prod you must supply the unique ID of an Apigee app
           # that has authorized access to your service proxy.
+          - template: "azure/components/get-aws-secrets-and-ssm-params.yml@common"
+        parameters:
+          secret_ids:
+          - ptl/api-deployment/caas-published-cohort-definitions/INTEGRATION_API_KEY
           - bash: |
                 export PROXY_NAME="$(FULLY_QUALIFIED_SERVICE_NAME)"
                 export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
                 export APIGEE_APP_ID="MY APP ID"
                 export STATUS_ENDPOINT_API_KEY="$(STATUS_ENDPOINT_API_KEY)"
                 export SOURCE_COMMIT_ID="$(Build.SourceVersion)"
+                export INTEGRATION_API_KEY="$(INTEGRATION_API_KEY)"
                 ${{ parameters.smoketest_command }}
             workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
             displayName: Run smoketests
@@ -56,12 +71,17 @@ steps:
                 testResultsFiles: "$(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/smoketest-report.xml"
                 failTaskOnFailedTests: true
     - ${{ if not(parameters.full) }}:
+          - template: "azure/components/get-aws-secrets-and-ssm-params.yml@common"
+        parameters:
+          secret_ids:
+          - ptl/api-deployment/caas-published-cohort-definitions/INTEGRATION_API_KEY
           - bash: |
                 export PROXY_NAME="$(FULLY_QUALIFIED_SERVICE_NAME)"
                 export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
                 export APIGEE_APP_ID="MY APP ID"
                 export STATUS_ENDPOINT_API_KEY="$(STATUS_ENDPOINT_API_KEY)"
                 export SOURCE_COMMIT_ID="$(Build.SourceVersion)"
+                export INTEGRATION_API_KEY="$(INTEGRATION_API_KEY)"
                 ${{ parameters.functionaltest_command }}
             workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
             displayName: Run functionaltest
