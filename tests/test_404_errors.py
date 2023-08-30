@@ -15,7 +15,7 @@ from lib.constants import CORRELATION_IDS, METHODS
 @pytest.mark.parametrize("method", METHODS)
 def test_404_not_found(nhsd_apim_proxy_url, correlation_id, method):
     error_response = getattr(requests, method)(
-        f"{nhsd_apim_proxy_url}/invalid",
+        f"{nhsd_apim_proxy_url}/invalidurl",
         headers=Generators.generate_target_server_headers(correlation_id)
     )
 
