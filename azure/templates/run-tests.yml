@@ -15,8 +15,8 @@ parameters:
 steps:
     - template: "azure/components/aws-assume-role.yml@common"
       parameters:
-        role: "auto-ops"
-        profile: "apm_ptl"
+          role: "auto-ops"
+          profile: "apm_ptl"
 
     - bash: |
           make install-python
@@ -46,9 +46,9 @@ steps:
           # In order to run tests in prod you must supply the unique ID of an Apigee app
           # that has authorized access to your service proxy.
           - template: "azure/components/get-aws-secrets-and-ssm-params.yml@common"
-                parameters:
+            parameters:
                 secret_ids:
-                - ptl/api-deployment/caas-published-cohort-definitions/INTEGRATION_API_KEY
+                    - ptl/api-deployment/caas-published-cohort-definitions/INTEGRATION_API_KEY
           - bash: |
                 export PROXY_NAME="$(FULLY_QUALIFIED_SERVICE_NAME)"
                 export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
@@ -67,9 +67,9 @@ steps:
                 failTaskOnFailedTests: true
     - ${{ if not(parameters.full) }}:
           - template: "azure/components/get-aws-secrets-and-ssm-params.yml@common"
-                parameters:
+            parameters:
                 secret_ids:
-                - ptl/api-deployment/caas-published-cohort-definitions/INTEGRATION_API_KEY
+                    - ptl/api-deployment/caas-published-cohort-definitions/INTEGRATION_API_KEY
           - bash: |
                 export PROXY_NAME="$(FULLY_QUALIFIED_SERVICE_NAME)"
                 export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
