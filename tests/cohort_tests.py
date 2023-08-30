@@ -27,7 +27,7 @@ def test_for_getall_query(nhsd_apim_proxy_url, correlation_id):
 
     published_cohort_definitions_Response_json = published_cohort_definitions_response.json()
 
-    published_cohort_definitions_response.status_code == 200
+    assert published_cohort_definitions_response.status_code == 200
     assert expected_response_published_library_get_all == published_cohort_definitions_Response_json
 
 
