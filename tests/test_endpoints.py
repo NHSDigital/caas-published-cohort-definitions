@@ -7,7 +7,7 @@ import requests
 import pytest
 from os import getenv
 from lib import Generators
-from lib.api_helpers import *
+from lib.api_helpers import published_cohort_library_get_all_request_body
 
 
 @pytest.mark.smoketest
