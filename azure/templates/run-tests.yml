@@ -13,6 +13,11 @@ parameters:
       default: "make functionaltest"
 
 steps:
+    - template: "azure/components/aws-assume-role.yml@common"
+      parameters:
+        role: "auto-ops"
+        profile: "apm_ptl"
+
     - bash: |
           make install-python
       workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
