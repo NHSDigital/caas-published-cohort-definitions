@@ -8,7 +8,8 @@ import pytest
 import json
 from lib import Generators
 from lib.constants import CORRELATION_IDS, URL_SLUG
-from lib.api_helpers import published_cohort_library_get_all_request_body, published_cohort_library_get_all_expected_response, get_by_slug_name_request_body
+from lib.api_helpers import (published_cohort_library_get_all_request_body, published_cohort_library_get_all_expected_response,
+                             get_by_slug_name_request_body)
 
 expected_response_published_library_get_all = json.load(published_cohort_library_get_all_expected_response)
 
