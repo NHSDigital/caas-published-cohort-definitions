@@ -18,6 +18,11 @@ steps:
           role: "auto-ops"
           profile: "apm_ptl"
 
+    - template: "azure/components/get-aws-secrets-and-ssm-params.yml@common"
+      parameters:
+          secret_ids:
+              - ptl/api-deployment/caas-published-cohort-definitions/INTEGRATION_API_KEY
+
     - bash: |
           make install-python
       workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
