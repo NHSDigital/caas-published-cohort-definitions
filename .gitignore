@@ -23,6 +23,4 @@ smoketest-report.xml
 *-report.xml
 *.key
 *.pem
-sandbox/coverage
-sandbox/.nyc_output
 /.vscode
