@@ -24,7 +24,7 @@ def test_for_getall_query(nhsd_apim_proxy_url, correlation_id):
         headers=Generators.generate_target_server_headers(correlation_id),
         json=published_cohort_library_get_all_request_body
     )
-    print(Generators.generate_target_server_headers(correlation_id), 'tttttt')
+
     published_cohort_definitions_Response_json = published_cohort_definitions_response.json()
 
     assert published_cohort_definitions_response.status_code == 200
