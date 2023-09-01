@@ -15,9 +15,12 @@ __pycache__/
 .idea/
 .venv/
 
+functionaltest-report.xml
 smoketest-report.xml
-env
+.env
 .dir-locals.el
 *.pyc
-
+*-report.xml
+*.key
+*.pem
 /.vscode
