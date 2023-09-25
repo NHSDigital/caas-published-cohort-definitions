@@ -6,21 +6,21 @@
     "commissioner": "NHS-E",
     "demographicsText": "All those aged 5 years or older in the clinical risk groups shown in Tables 3 and 4 of the Green Book.",
     "description": "The autumn booster is being offered to those at high risk of the complications of infection. The booster should help to reduce their risk of being admitted to hospital.",
-    "disclaimerText": "The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book, chapter 14a and associated assumptions.",
+    "disclaimerText": "The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book and associated assumptions.",
     "fixedDateReference": null,
     "name": "Autumn booster vaccinations",
     "purpose": "Direct care",
     "shortName": "Vaccine",
-    "summary": "NHS England commissioned Cohort as a Service (CaaS) to identify people that were eligible for the autumn booster vaccination.\nTo be eligible, they needed to be:\n- children aged 5 to 15 years\n- adults aged 16 years and over\n- in defined clinical risk groups shown in tables 3 and 4 of the [Green Book, chapter 14a]( https://www.gov.uk/government/publications/)\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met the rules.\nThe data collected helped to:\n- contact or remind people to receive their  autumn booster\n- focus protection on those at clinical risk\n- report and monitor on the 2022 to 2023 autumn booster campaign",
+    "summary": "NHS England commissioned Cohort as a Service (CaaS) to identify people that were eligible for the autumn booster vaccination.\nTo be eligible, they needed to be:\n- children aged 5 to 15 years\n- adults aged 16 years and over\n- in defined clinical risk groups shown in tables 3 and 4 of the [Green Book]( https://www.gov.uk/government/publications/)\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met the rules.\nThe data collected helped to:\n- contact or remind people to receive their  autumn booster\n- focus protection on those at clinical risk\n- report and monitor on the autumn booster campaign",
     "urlSlug": "booster-vaccinations-v1",
     "conditionGroups": [
       {
         "id": "d1f83f16-ffe0-4784-b67c-89c27a11e16c",
         "lastUpdated": "2023-09-25T12:46:17.727Z",
-        "name": "Asplenia or dysfunction of the spleen (2022 to 2023)",
+        "name": "Asplenia or dysfunction of the spleen",
         "nonDigitalPathwayOverview": "If a person receives care from another healthcare provider, for example a hospital, specialist, or community clinic, their GP record is not automatically updated.\nIf a person’s GP record is not up-to-date when creating a cohort, they may not be included in the digital pathway.\nThis may result in a person not receiving the invite for their vaccination.\nIf you believe you’re eligible for a vaccination, but have not received your invite, then [visit the NHS website on the vaccination](https://www.nhs.uk/) for more information.",
-        "ruleLogicOverview": "The table below shows the clinical rules used to determine who should be contacted or reminded to receive their autumn booster vaccinations based on specific medical conditions.\nThese conditions are detailed in the [Green Book, chapter 14a](https://www.gov.uk/government/publications/).",
-        "urlSlug": "22-to-23-asplenia",
+        "ruleLogicOverview": "The table below shows the clinical rules used to determine who should be contacted or reminded to receive their autumn booster vaccinations based on specific medical conditions.\nThese conditions are detailed in the [Green Book](https://www.gov.uk/government/publications/).",
+        "urlSlug": "asplenia",
         "summary": null,
         "conditions": [
           {
@@ -219,10 +219,10 @@
       {
         "id": "d32f99b8-7dad-454b-a85c-5c6c98230e3c",
         "lastUpdated": "2023-09-25T12:46:17.727Z",
-        "name": "Chronic heart disease (COVID-19 2022 to 2023)",
+        "name": "Chronic heart disease",
         "nonDigitalPathwayOverview": "If a person receives care from another healthcare provider, for example a hospital, specialist, or community clinic, their GP record is not automatically updated.\nIf a person’s GP record is not up-to-date when creating a cohort, they may not be included in the digital pathway.\nThis may result in a person not receiving the invite for their vaccination.\nIf you believe you’re eligible for a vaccination, but have not received your invite, then [visit the NHS website on the COVID-19 vaccination](https://www.nhs.uk/conditions/covid-19/covid-19-vaccination/getting-a-covid-19-vaccine/) for more information.",
-        "ruleLogicOverview": "The table below shows the clinical rules used to determine who should be contacted or reminded to receive their COVID-19 autumn booster vaccinations based on specific medical conditions.\nThese conditions are detailed in the [COVID-19 Green Book, chapter 14a](https://www.gov.uk/government/publications/covid-19-the-green-book-chapter-14a).",
-        "urlSlug": "covid-22-to-23-chronic-heart-disease",
+        "ruleLogicOverview": "The table below shows the clinical rules used to determine who should be contacted or reminded to receive their autumn booster vaccinations based on specific medical conditions.\nThese conditions are detailed in the [Green Book](https://www.gov.uk/government/publications).",
+        "urlSlug": "chronic-heart-disease",
         "summary": null,
         "conditions": [
           {
@@ -465,14 +465,14 @@
     "clinicalAtRiskGroupsText": "The condition groups listed below provide detailed information on who is included and excluded from the digital cohort.\n\nThe list is not exhaustive, and decisions should be based on clinical judgement.\n\nThe clinical at-risk groups are:",
     "id": "220de6d4-62f8-4757-8f27-177817ce0085",
     "commissioner": "NHS-E vaccination programme's Tech and Data workstream, delivered by NHS Digital.",
-    "demographicsText": "All people aged 6 months or older that are in the clinical risk groups shown in table 19.4, chapter 19 of the Green Book.",
+    "demographicsText": "All people aged 6 months or older that are in the clinical risk groups shown in the Green Book.",
     "description": "The vaccination is recommended for all people over 6 months of age. It provides protection to those who are at higher risk of serious illness.",
-    "disclaimerText": "The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book, chapter 19 and associated assumptions.",
+    "disclaimerText": "The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book and associated assumptions.",
     "fixedDateReference": null,
     "name": "Vaccinations 2022 to 2023",
     "purpose": "Direct Care",
     "shortName": "Vaccination cohort",
-    "summary": "NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the 2022 to 2023 vaccination.\nTo be eligible, they needed to be:\n- 6 months of age or older\n- in defined clinical risk groups shown in the [Green Book, chapter 19](https://www.gov.uk/government/publications/)\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\nThe data collected helped to:\n- contact or remind people to receive their vaccination between 1 September 2022 and 31 March 2023\n- focus protection on those at a clinical risk\n- monitor the number of people who received the vaccination",
+    "summary": "NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the 2022 to 2023 vaccination.\nTo be eligible, they needed to be:\n- 6 months of age or older\n- in defined clinical risk groups shown in the [Green Book](https://www.gov.uk/government/publications/)\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\nThe data collected helped to:\n- contact or remind people to receive their vaccination between 1 September 2022 and 31 March 2023\n- focus protection on those at a clinical risk\n- monitor the number of people who received the vaccination",
     "urlSlug": "22-to-23",
     "conditionGroups": [
       {
@@ -480,7 +480,7 @@
         "lastUpdated": "2023-09-25T12:46:17.727Z",
         "name": "Chronic heart disease (2022 to 2023)",
         "nonDigitalPathwayOverview": "If a person receives care from another healthcare provider, for example a hospital, specialist, or community clinic, their GP record is not automatically updated.\nIf a person’s GP record is not up-to-date when creating a cohort, they may not be included in the digital pathway.\nThis may result in a person not receiving the invite for their vaccination.\nIf you believe you’re eligible for a vaccination, but have not received your invite, then [visit the NHS website on the vaccination](https://www.nhs.uk/conditions/vaccinations/) for more information.",
-        "ruleLogicOverview": "The table below shows the clinical rules used to determine who should be contacted or reminded to receive their vaccination based on specific medical conditions.\nThese conditions are detailed in the [Green Book, chapter 19](https://www.gov.uk/government/publications/).",
+        "ruleLogicOverview": "The table below shows the clinical rules used to determine who should be contacted or reminded to receive their vaccination based on specific medical conditions.\nThese conditions are detailed in the [Green Book](https://www.gov.uk/government/publications/).",
         "urlSlug": "22-to-23-chronic-heart-disease",
         "summary": null,
         "conditions": [
@@ -563,10 +563,10 @@
       {
         "id": "ae0324d0-3fed-4766-bae2-26e089b78b8a",
         "lastUpdated": "2023-09-25T12:46:17.727Z",
-        "name": "Chronic kidney disease (2022 to 2023)",
+        "name": "Chronic kidney disease",
         "nonDigitalPathwayOverview": "If a person receives care from another healthcare provider, for example a hospital, specialist, or community clinic, their GP record is not automatically updated.\nIf a person’s GP record is not up-to-date when creating a cohort, they may not be included in the digital pathway.\nThis may result in a person not receiving the invite for their vaccination.\nIf you believe you’re eligible for a vaccination, but have not received your invite, then [visit the NHS website](https://www.nhs.uk/conditions/vaccinations/) for more information.",
-        "ruleLogicOverview": "The table below shows the clinical rules used to determine who should be contacted or reminded to receive their vaccination based on specific medical conditions.\nThese conditions are detailed in the [Green Book, chapter 19](https://www.gov.uk/government/publications/).",
-        "urlSlug": "22-to-23-chronic-kidney-disease",
+        "ruleLogicOverview": "The table below shows the clinical rules used to determine who should be contacted or reminded to receive their vaccination based on specific medical conditions.\nThese conditions are detailed in the [Green Book](https://www.gov.uk/government/publications/).",
+        "urlSlug": "chronic-kidney-disease",
         "summary": null,
         "conditions": [
           {
