@@ -1,0 +1,36 @@
+{
+  "data": {
+    "PublishedCohortLibraryGetAll": [
+      {
+        "authors": "[\"Author name\"]",
+        "clinicalAtRiskGroupsText": "The links below provide detailed information on the clinical rules that determine who is eligible for the vaccination booster.\n\nThe rules apply to:\n- children aged 5 to 15 years within specific clinical at-risk groups\n- adults ages 16 years and over\n\nThe clinical at-risk groups are:",
+        "commissioner": "NHS-E",
+        "demographicsText": "All those aged 5 years or older in the clinical risk groups shown in the Green Book.",
+        "description": "The autumn booster is being offered to those at high risk of the complications of infection. The booster should help to reduce their risk of being admitted to hospita.",
+        "disclaimerText": "The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book.",
+        "fixedDateReference": null,
+        "id": "d63d834b-861d-405a-bad7-255896885ffc",
+        "name": "Autumn booster vaccinations",
+        "purpose": "Direct care",
+        "shortName": "Vaccine",
+        "summary": "NHS England commissioned Cohort as a Service (CaaS) to identify people that were eligible for the autumn booster vaccination.\nTo be eligible, they needed to be:\n- children aged 5 to 15 years\n- adults aged 16 years and over\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met the rules.\nThe data collected helped to:\n- contact or remind people to receive their autumn booster\n- focus protection on those at clinical risk\n- report and monitor on the autumn booster campaign",
+        "urlSlug": "booster-vaccinations-v1"
+      },
+      {
+        "authors": "[\"Author name\"]",
+        "clinicalAtRiskGroupsText": "The condition groups listed below provide detailed information on who is included and excluded from the digital cohort.\n\nThe list is not exhaustive, and decisions should be based on clinical judgement.\n\nThe clinical at-risk groups are:",
+        "commissioner": "NHS-E",
+        "demographicsText": "All people aged 6 months or older that are in the clinical risk groups shown in the Green Book.",
+        "description": "The vaccination is recommended for all people over 6 months of age. It provides protection to those who are at higher risk of serious illness.",
+        "disclaimerText": "The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book.",
+        "fixedDateReference": null,
+        "id": "220de6d4-62f8-4757-8f27-177817ce0085",
+        "name": "Vaccinations",
+        "purpose": "Direct Care",
+        "shortName": "vaccination cohort",
+        "summary": "NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the vaccination.\nTo be eligible, they needed to be:\n- 6 months of age or older\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\nThe data collected helped to:\n- contact or remind people to receive their vaccination\n- focus protection on those at clinical risk\n- monitor the number of people who received the vaccination",
+        "urlSlug": "vaccination"
+      }
+    ]
+  }
+}
