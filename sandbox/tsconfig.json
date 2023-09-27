@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "composite": true,
+    "strict": true,
+    "paths": {
+      "@caas-ce-api/*": ["packages/*"]
+    },
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "data/cohort.json"],
+  "exclude": ["node_modules", "jest.config.js, next.config.js"],
+  "types": ["@types/jest"]
+}
