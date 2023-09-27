@@ -1,21 +1,36 @@
 {
   "data": {
-   "PublishedCohortLibraryGetAll": [
-    {
-     "authors": "[\"Author name\"]",
-     "clinicalAtRiskGroupsText": "The condition groups listed below provide detailed information on who is included and excluded from the digital cohort.\n\nThe list is not exhaustive, and decisions should be based on clinical judgement.\n\nThe clinical at-risk groups are:",
-     "id": "220de6d4-62f8-4757-8f27-177817ce0085",
-     "commissioner": "NHS-E vaccination programme's Tech and Data workstream, delivered by NHS Digital.",
-     "demographicsText": "All people aged 6 months or older that are in the clinical risk groups shown in table 19.4, chapter 19 of the Green Book.",
-     "description": "The flu vaccination is recommended for all people over 6 months of age. It provides protection to those who are at higher risk of serious illness from flu.",
-     "disclaimerText": "The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book, chapter 19 and associated assumptions.",
-     "fixedDateReference": null,
-     "name": "Flu vaccinations 2022 to 2023",
-     "purpose": "Direct Care",
-     "shortName": "flu vaccination cohort",
-     "urlSlug": "flu-22-to-23",
-     "summary": "NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the 2022 to 2023 winter flu vaccination.\nTo be eligible, they needed to be:\n- 6 months of age or older\n- in defined clinical risk groups shown in the [Green Book, chapter 19](https://www.gov.uk/government/publications/influenza-the-green-book-chapter-19)\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\nThe data collected helped to:\n- contact or remind people to receive their flu vaccination between 1 September 2022 and 31 March 2023\n- focus protection on those at a clinical risk of flu\n- monitor the number of people who received the flu vaccination"
-    }
-   ]
+    "PublishedCohortLibraryGetAll": [
+      {
+        "authors": "[\"Author name\"]",
+        "clinicalAtRiskGroupsText": "The links below provide detailed information on the clinical rules that determine who is eligible for the COVID-19 booster.\n\nThe rules apply to:\n- children aged 5 to 15 years within specific clinical at-risk groups\n- adults ages 16 years and over\n\nThe clinical at-risk groups are:",
+        "id": "d63d834b-861d-405a-bad7-255896885ffc",
+        "commissioner": "NHS-E",
+        "demographicsText": "All those aged 5 years or older in the clinical risk groups shown in Tables 3 and 4 of the Green Book.",
+        "description": "The autumn booster is being offered to those at high risk of the complications of COVID-19 infection. The booster should help to reduce their risk of being admitted to hospital with COVID-19.",
+        "disclaimerText": "The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book, chapter 14a and associated assumptions.",
+        "fixedDateReference": null,
+        "name": "COVID-19 autumn booster vaccinations 2022 to 2023",
+        "purpose": "Direct care",
+        "shortName": "COVID-19 Vaccine 22-23",
+        "urlSlug": "covid-19-autumn-booster-vaccinations-2022-to-2023-v1",
+        "summary": "NHS England commissioned Cohort as a Service (CaaS) to identify people that were eligible for the autumn 2022 to 2023 COVID-19 booster vaccination.\nTo be eligible, they needed to be:\n- children aged 5 to 15 years\n- adults aged 16 years and over\n- in defined clinical risk groups shown in tables 3 and 4 of the [Green Book, chapter 14a]( https://www.gov.uk/government/publications/covid-19-the-green-book-chapter-14a)\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met the rules.\nThe data collected helped to:\n- contact or remind people to receive their COVID autumn booster\n- focus protection on those at clinical risk of COVID-19\n- report and monitor on the 2022 to 2023 autumn booster campaign"
+      },
+      {
+        "authors": "[\"Author name\"]",
+        "clinicalAtRiskGroupsText": "The condition groups listed below provide detailed information on who is included and excluded from the digital cohort.\n\nThe list is not exhaustive, and decisions should be based on clinical judgement.\n\nThe clinical at-risk groups are:",
+        "id": "220de6d4-62f8-4757-8f27-177817ce0085",
+        "commissioner": "NHS-E vaccination programme's Tech and Data workstream, delivered by NHS Digital.",
+        "demographicsText": "All people aged 6 months or older that are in the clinical risk groups shown in table 19.4, chapter 19 of the Green Book.",
+        "description": "The flu vaccination is recommended for all people over 6 months of age. It provides protection to those who are at higher risk of serious illness from flu.",
+        "disclaimerText": "The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book, chapter 19 and associated assumptions.",
+        "fixedDateReference": null,
+        "name": "Flu vaccinations 2022 to 2023",
+        "purpose": "Direct Care",
+        "shortName": "flu vaccination cohort",
+        "urlSlug": "flu-22-to-23",
+        "summary": "NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the 2022 to 2023 winter flu vaccination.\nTo be eligible, they needed to be:\n- 6 months of age or older\n- in defined clinical risk groups shown in the [Green Book, chapter 19](https://www.gov.uk/government/publications/influenza-the-green-book-chapter-19)\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\nThe data collected helped to:\n- contact or remind people to receive their flu vaccination between 1 September 2022 and 31 March 2023\n- focus protection on those at a clinical risk of flu\n- monitor the number of people who received the flu vaccination"
+      }
+    ]
   }
- }
+}
