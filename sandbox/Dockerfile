@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:18
 
 COPY . /sandbox
 
@@ -6,6 +6,6 @@ WORKDIR /sandbox
 
 RUN npm install
 
-EXPOSE 9000
+EXPOSE 4040
 
 CMD ["npm", "start"]
