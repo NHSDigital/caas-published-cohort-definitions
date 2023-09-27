@@ -13,6 +13,7 @@
     "shortName": "Vaccine",
     "summary": "NHS England commissioned Cohort as a Service (CaaS) to identify people that were eligible for the autumn booster vaccination.\nTo be eligible, they needed to be:\n- children aged 5 to 15 years\n- adults aged 16 years and over\n- in defined clinical risk groups shown in tables 3 and 4 of the [Green Book]( https://www.gov.uk/government/publications/)\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met the rules.\nThe data collected helped to:\n- contact or remind people to receive their  autumn booster\n- focus protection on those at clinical risk\n- report and monitor on the autumn booster campaign",
     "urlSlug": "booster-vaccinations-v1",
+    "lastUpdated": "2023-09-25T12:46:17.727Z",
     "conditionGroups": [
       {
         "id": "d1f83f16-ffe0-4784-b67c-89c27a11e16c",
@@ -478,6 +479,7 @@
     "shortName": "Vaccination cohort",
     "summary": "NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the 2022 to 2023 vaccination.\nTo be eligible, they needed to be:\n- 6 months of age or older\n- in defined clinical risk groups shown in the [Green Book](https://www.gov.uk/government/publications/)\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\nThe data collected helped to:\n- contact or remind people to receive their vaccination between 1 September 2022 and 31 March 2023\n- focus protection on those at a clinical risk\n- monitor the number of people who received the vaccination",
     "urlSlug": "22-to-23",
+    "lastUpdated": "2023-09-25T12:46:17.727Z",
     "conditionGroups": [
       {
         "id": "b867218e-9ec1-43f9-b0ef-b2ae1fc99fa8",
