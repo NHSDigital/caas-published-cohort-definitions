@@ -1,4 +1,4 @@
-import pino, { Bindings, BaseLogger } from 'pino';
+import pino from 'pino';
 
 function createLogger() {
     return pino()

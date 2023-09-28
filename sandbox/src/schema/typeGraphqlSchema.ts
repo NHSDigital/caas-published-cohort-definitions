@@ -1014,60 +1014,6 @@ export class ErrorDescription {
   errorDescription?: string;
 }
 
-@ObjectType({
-  description: "A Cohort's metadata",
-})
-export class CohortMetaData {
-  @Field((type) => ApprovalState, {
-    description: 'Approval state',
-  })
-  approvalState?: ApprovalState;
-
-  @Field((type) => PublishedState, {
-    description: 'Published state',
-    nullable: true,
-  })
-  publishedState?: PublishedState;
-}
-
-@ObjectType({
-  description: "Contains a Cohort and it's metadata",
-})
-export class CohortWithMetaData {
-  @Field((type) => Cohort, {
-    description: 'A cohort',
-    nullable: true,
-  })
-  cohort?: Cohort;
-
-  @Field((type) => CohortMetaData, {
-    description:
-      'The metadata for the Cohort, currently the published and approval states',
-  })
-  metadata?: CohortMetaData;
-}
-@ObjectType({
-  description: 'Read All Cohorts Result',
-})
-export class ApprovalWorkflowReadAllCohortsResult {
-  @Field((type) => [CohortWithMetaData], {
-    description: 'Array of Cohorts with Meta Data',
-  })
-  cohortsWithMetaData?: CohortWithMetaData[];
-}
-
-export const ActivityLogSearchResultUnion = createUnionType({
-  name: 'ActivityLogSearchResult', // the name of the GraphQL union
-  types: () => [ActivityLog, ErrorDescription] as const, // function that returns tuple of object types classes
-  // our implementation of detecting returned object type
-  resolveType: (value) => {
-    if ('code' in value) {
-      return ErrorDescription;
-    }
-    return 'ActivityLog';
-  },
-});
-
 export const CohortSearchResultUnion = createUnionType({
   name: 'CohortSearchResult', // the name of the GraphQL union
   types: () => [Cohort, ErrorDescription] as const, // function that returns tuple of object types classes
@@ -1077,65 +1023,6 @@ export const CohortSearchResultUnion = createUnionType({
       return ErrorDescription;
     }
     return 'Cohort';
-  },
-});
-
-export const ConditionGroupSearchResultUnion = createUnionType({
-  name: 'ConditionGroupSearchResult', // the name of the GraphQL union
-  types: () => [ConditionGroup, ErrorDescription] as const, // function that returns tuple of object types classes
-  // our implementation of detecting returned object type
-  resolveType: (value) => {
-    if ('code' in value) {
-      return ErrorDescription;
-    }
-    return 'ConditionGroup';
-  },
-});
-
-export const DatasetsSearchResultUnion = createUnionType({
-  name: 'DatasetsSearchResult', // the name of the GraphQL union
-  types: () => [Dataset, ErrorDescription] as const, // function that returns tuple of object types classes
-  // our implementation of detecting returned object type
-  resolveType: (value) => {
-    if ('code' in value) {
-      return ErrorDescription;
-    }
-    return 'Dataset';
-  },
-});
-
-@ObjectType({
-  description: 'Describes why an API request has failed',
-})
-export class ApprovalWorkflowUpdateConditionGroupResult {
-  @Field((type) => String, {
-    description:
-      'A universally unique identifier for the new conditionGroup version',
-  })
-  conditionGroupId?: string;
-}
-
-export const ApprovalWorkflowUpdateConditionGroupResultUnion = createUnionType({
-  name: 'ApprovalWorkflowUpdateConditionGroup',
-  types: () =>
-    [ApprovalWorkflowUpdateConditionGroupResult, ErrorDescription] as const,
-  resolveType: (value) => {
-    if ('code' in value) {
-      return ErrorDescription;
-    }
-    return 'ApprovalWorkflowUpdateConditionGroupResult';
-  },
-});
-
-export const ApprovalWorkflowReadAllCohortsResultUnion = createUnionType({
-  name: 'ApprovalWorkflowReadAllCohortsResultUnion',
-  types: () =>
-    [ApprovalWorkflowReadAllCohortsResult, ErrorDescription] as const,
-  resolveType: (value) => {
-    if ('code' in value) {
-      return 'ErrorDescription';
-    }
-    return 'ApprovalWorkflowReadAllCohortsResult';
   },
 });
 
@@ -1152,5 +1039,4 @@ export const orphanedType = [
   Condition,
   ConditionGroup,
   ActivityLog,
-  CohortMetaData,
 ];
