@@ -16,7 +16,11 @@ export class CohortResolver {
     const cohortBySlugName = context.allCohorts.find(
       (cohort) => cohort.urlSlug === urlSlug
     );
-    return cohortBySlugName || { code: 'error' };
+
+    return cohortBySlugName || {
+        code: '404',
+        errorDescription: 'Cohort Not Found',
+      };
   }
 
   @Query((returns) => [Schema.Cohort])
