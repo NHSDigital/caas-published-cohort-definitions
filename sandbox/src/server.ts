@@ -59,7 +59,7 @@ export async function returnSchema(): Promise<GraphQLSchema> {
     ],
     dateScalarMode: 'isoDate', // "timestamp" or "isoDate"
     validate: { forbidUnknownValues: false }, // https://github.com/MichalLytek/type-graphql/issues/1397
-    orphanedTypes: [...Schema.orphanedType, Schema.Cohort],
+    orphanedTypes: [...Schema.orphanedType],
   });
 
   return schema;
