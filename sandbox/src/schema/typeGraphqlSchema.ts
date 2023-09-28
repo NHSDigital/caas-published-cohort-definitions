@@ -479,14 +479,14 @@ export class Rule {
       'This constrains the date when the patient journal event occurred. This might be to identify people who had a certain treatment in the last two years.',
     nullable: true,
   })
-  eventDateConstraint?: EventDateConstraint;
+  eventDateConstraint?: EventDateConstraint|null;
 
   @Field((type) => EventCountConstraint, {
     description: `This constrains the number of times an event within the patient journal has occurred.
     This might be to identify people who have had a treatment at least 4 times.`,
     nullable: true,
   })
-  eventCountConstraint?: EventCountConstraint;
+  eventCountConstraint?: EventCountConstraint|null;
 
   @Field((type) => [PreCoordinatedConstraint], {
     description:
@@ -731,7 +731,7 @@ export class ConditionGroup {
       'Summary field to the ConditionGroup. When this is encountered the CG Page can just display the summary text and skip any other content',
     nullable: true,
   })
-  summary?: string;
+  summary?: string|null;
 
   @Field((type) => [Condition], {
     description: `A Condition represents a focused set of clinical 'conditions' such as
@@ -842,7 +842,7 @@ export class Cohort {
       'A date specific to this Cohort which Event Date Constraints in the business logic are in reference to',
     nullable: true,
   })
-  fixedDateReference?: string;
+  fixedDateReference?: string|null;
 
   @Field((type) => String, {
     description: 'The last time this cohort was changed as an ISO string',
@@ -887,7 +887,7 @@ export class Cohort {
       'This constrains the people identified to be within certain age limits. This might be used to find people over 5 years of age.',
     nullable: true,
   })
-  patientAgeConstraint?: PatientAgeConstraint;
+  patientAgeConstraint?: PatientAgeConstraint|null;
 
   curatedDataPublishedState?: string;
 }
