@@ -50,7 +50,7 @@ const args = Object.fromEntries(
   process.argv.slice(2).map((arg) => arg.split('='))
 ) as { [index: string]: string | undefined };
 
-const port = Number.parseInt(args['--port'] || '4040', 10);
+const port = Number.parseInt(args['--port'] || '9000', 10);
 
 export async function returnSchema(): Promise<GraphQLSchema> {
   const schema = await buildSchema({

@@ -6,6 +6,6 @@ WORKDIR /sandbox
 
 RUN npm install
 
-EXPOSE 4040
+EXPOSE 9000
 
 CMD ["npm", "start"]
