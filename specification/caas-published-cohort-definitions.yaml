@@ -50,36 +50,6 @@ info:
       },
       "item": [
         {
-          "name": "PR15",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "graphql",
-              "graphql": {
-                "query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        lastUpdated\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
-                "variables": ""
-              }
-            },
-            "url": {
-              "raw": "https://internal-dev-sandbox.api.service.nhs.uk/caas-published-cohort-definitions-pr-15/api",
-              "protocol": "https",
-              "host": [
-                "internal-dev-sandbox",
-                "api",
-                "service",
-                "nhs",
-                "uk"
-              ],
-              "path": [
-                "caas-published-cohort-definitions-pr-15",
-                "api"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "PublishedCohortLibraryGetBySlugName - SANDBOX",
           "request": {
             "method": "POST",
@@ -132,7 +102,7 @@ info:
             "body": {
               "mode": "graphql",
               "graphql": {
-                "query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        lastUpdated\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
+                "query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
                 "variables": ""
               }
             },
@@ -148,39 +118,6 @@ info:
               ],
               "path": [
                 "caas-published-cohort-definitions",
-                "api"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "PR15 BySlugName",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "graphql",
-              "graphql": {
-                "query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: \"flu-22-to-23\") {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
-                "variables": ""
-              }
-            },
-            "url": {
-              "raw": "https://internal-dev-sandbox.api.service.nhs.uk/caas-published-cohort-definitions-pr-15/api",
-              "protocol": "https",
-              "host": [
-                "internal-dev-sandbox",
-                "api",
-                "service",
-                "nhs",
-                "uk"
-              ],
-              "path": [
-                "caas-published-cohort-definitions-pr-15",
                 "api"
               ]
             }
@@ -240,7 +177,7 @@ info:
             "body": {
               "mode": "graphql",
               "graphql": {
-                "query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        lastUpdated\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
+                "query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
                 "variables": ""
               }
             },
