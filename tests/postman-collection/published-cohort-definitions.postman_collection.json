@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "5ce2b578-3079-4ea9-a33e-06ed64a0ccb2",
+		"name": "published-cohort-definitions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18640524"
+	},
+	"item": [
+		{
+			"name": "PublishedCohortLibraryGetBySlugName - SANDBOX",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: \"flu-22-to-23\") {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://internal-dev-sandbox.api.service.nhs.uk/caas-published-cohort-definitions/api",
+					"protocol": "https",
+					"host": [
+						"internal-dev-sandbox",
+						"api",
+						"service",
+						"nhs",
+						"uk"
+					],
+					"path": [
+						"caas-published-cohort-definitions",
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PublishedCohortLibraryGetBySlugName",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\":\"query PublishedCohortLibraryGetAll {\\n    PublishedCohortLibraryGetAll {\\n        authors\\n        clinicalAtRiskGroupsText\\n        id\\n        commissioner\\n        demographicsText\\n        description\\n        disclaimerText\\n        fixedDateReference\\n        name\\n        purpose\\n        shortName\\n        summary\\n        urlSlug\\n    }\\n}\"\n}"
+				},
+				"url": {
+					"raw": "https://internal-dev.api.service.nhs.uk/caas-published-cohort-definitions/api",
+					"protocol": "https",
+					"host": [
+						"internal-dev",
+						"api",
+						"service",
+						"nhs",
+						"uk"
+					],
+					"path": [
+						"caas-published-cohort-definitions",
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PublishedCohortLibraryGetAll - SANDBOX",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        lastUpdated\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://internal-dev-sandbox.api.service.nhs.uk/caas-published-cohort-definitions/api",
+					"protocol": "https",
+					"host": [
+						"internal-dev-sandbox",
+						"api",
+						"service",
+						"nhs",
+						"uk"
+					],
+					"path": [
+						"caas-published-cohort-definitions",
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PublishedCohortLibraryGetAll",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://internal-dev.api.service.nhs.uk/caas-published-cohort-definitions/api",
+					"protocol": "https",
+					"host": [
+						"internal-dev",
+						"api",
+						"service",
+						"nhs",
+						"uk"
+					],
+					"path": [
+						"caas-published-cohort-definitions",
+						"api"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

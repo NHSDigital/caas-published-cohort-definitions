@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "node_modules/.bin/openapi-generator-cli validate -i specification/caas-published-cohort-definitions.yaml",
     "publish": "./node_modules/.bin/openapi-generator-cli generate -i specification/caas-published-cohort-definitions.yaml --generator-key v3.0  -g openapi -o build && rm openapitools.json && mv build/openapi.json build/caas-published-cohort-definitions.json",
-    "check-licenses": "node_modules/.bin/license-checker --failOn GPL --failOn LGPL"
+    "check-licenses": "node_modules/.bin/license-checker --failOn GPL --failOn LGPL",
+    "postman-test": "node_modules/.bin/newman run ./tests/postman-collection/published-cohort-definitions.postman_collection.json"
   },
   "author": "NHS Digital",
   "license": "MIT",
@@ -15,5 +16,8 @@
     "apigeetool": "^0.5.4",
     "license-checker": "^25.0.1",
     "minimist": "^1.2.2"
+  },
+  "dependencies": {
+    "newman": "^6.0.0"
   }
 }
