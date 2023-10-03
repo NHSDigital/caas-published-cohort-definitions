@@ -41,173 +41,23 @@ info:
     [published-cohort-definitions.postman_collection.json](../tests/postman-collection/published-cohort-definitions.postman_collection.json)
     
     ```json
-    {
-      "info": {
-        "_postman_id": "5ce2b578-3079-4ea9-a33e-06ed64a0ccb2",
-        "name": "published-cohort-definitions",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-        "_exporter_id": "18640524"
-      },
-      "item": [
-        {
-          "name": "PublishedCohortLibraryGetBySlugName - SANDBOX",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "graphql",
-              "graphql": {
-                "query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: \"flu-22-to-23\") {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
-                "variables": ""
-              }
-            },
-            "url": {
-              "raw": "https://internal-dev-sandbox.api.service.nhs.uk/caas-published-cohort-definitions/api",
-              "protocol": "https",
-              "host": [
-                "internal-dev-sandbox",
-                "api",
-                "service",
-                "nhs",
-                "uk"
-              ],
-              "path": [
-                "caas-published-cohort-definitions",
-                "api"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "PublishedCohortLibraryGetBySlugName",
-          "request": {
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "value",
-                  "value": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
-                  "type": "string"
-                },
-                {
-                  "key": "key",
-                  "value": "x-api-key",
-                  "type": "string"
-                }
-              ]
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "graphql",
-              "graphql": {
-                "query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
-                "variables": ""
-              }
-            },
-            "url": {
-              "raw": "https://internal-dev.api.service.nhs.uk/caas-published-cohort-definitions/api",
-              "protocol": "https",
-              "host": [
-                "internal-dev",
-                "api",
-                "service",
-                "nhs",
-                "uk"
-              ],
-              "path": [
-                "caas-published-cohort-definitions",
-                "api"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "PublishedCohortLibraryGetAll - SANDBOX",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "graphql",
-              "graphql": {
-                "query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        lastUpdated\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
-                "variables": ""
-              }
-            },
-            "url": {
-              "raw": "https://internal-dev-sandbox.api.service.nhs.uk/caas-published-cohort-definitions/api",
-              "protocol": "https",
-              "host": [
-                "internal-dev-sandbox",
-                "api",
-                "service",
-                "nhs",
-                "uk"
-              ],
-              "path": [
-                "caas-published-cohort-definitions",
-                "api"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "PublishedCohortLibraryGetAll",
-          "request": {
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "value",
-                  "value": "lVlQRHlM4M111q8fnmLBe201HAWMNQJH16SU8Q4C",
-                  "type": "string"
-                },
-                {
-                  "key": "key",
-                  "value": "x-api-key",
-                  "type": "string"
-                }
-              ]
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "graphql",
-              "graphql": {
-                "query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
-                "variables": ""
-              }
-            },
-            "url": {
-              "raw": "https://internal-dev.api.service.nhs.uk/caas-published-cohort-definitions/api",
-              "protocol": "https",
-              "host": [
-                "internal-dev",
-                "api",
-                "service",
-                "nhs",
-                "uk"
-              ],
-              "path": [
-                "caas-published-cohort-definitions",
-                "api"
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    }
     ```
+
     ### How to Import Postman Collections
     * Save the JSON file above
     * Launch Postman and go to the Collections section found on the left side. Then, select the "Import" option situated in the upper-left corner of the interface.
     * Within the "Import File" dialog, press the "Select Files" button and pick the Postman collection file you want to bring in.
     * After selecting the file, proceed by clicking the "Import" button to begin the import procedure.
     * Once the import process has finished, your recently imported collection should appear in the Collections tab.
+
+    ### How to locally Import GraphQL Schema using Postman
+    * Choose APIs from the sidebar, and then click on the '+' button to initiate the creation of a new API.
+    * Provide a name and version for your API.
+    * Click on Import under the Definition tab
+    * Import the schema.gql fine in sandbox/postman/schema.gql
+    * Navigate back to your GraphQL body and pick your schema from the dropdown menu. If necessary, you can refresh it by clicking on the refresh icon.
+    * Start typing your query. Postman will provide autocomplete suggestions based on the data available in your newly configured GraphQL schema.
+
 
   contact:
     name: 'caas-published-cohort-definitions API Support'
