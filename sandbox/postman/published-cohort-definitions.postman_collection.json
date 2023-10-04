@@ -48,8 +48,8 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: \"booster-vaccinations-v1\") {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
-						"variables": ""
+						"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+						"variables": "{\n    \"urlSlug\":\"{{validUrlSlug}}\"\n}"
 					}
 				},
 				"url": {
@@ -61,15 +61,15 @@
 			},
 			"response": [
 				{
-					"name": "booster-vaccinations-v1",
+					"name": "PublishedCohortLibraryGetBySlugName",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: \"booster-vaccinations-v1\") {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
-								"variables": ""
+								"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+								"variables": "{\n    \"urlSlug\":\"{{validUrlSlug}}\"\n}"
 							}
 						},
 						"url": {
@@ -85,7 +85,7 @@
 					"header": [
 						{
 							"key": "Date",
-							"value": "Tue, 03 Oct 2023 11:29:42 GMT"
+							"value": "Wed, 04 Oct 2023 10:25:18 GMT"
 						},
 						{
 							"key": "Content-Type",
@@ -138,6 +138,478 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"data\": {\n        \"PublishedCohortLibraryGetBySlugName\": {\n            \"id\": \"d63d834b-861d-405a-bad7-255896885ffc\",\n            \"name\": \"Autumn booster vaccinations\",\n            \"urlSlug\": \"booster-vaccinations-v1\",\n            \"conditionGroups\": [\n                {\n                    \"id\": \"d1f83f16-ffe0-4784-b67c-89c27a11e16c\",\n                    \"name\": \"Asplenia or dysfunction of the spleen\",\n                    \"urlSlug\": \"asplenia\"\n                },\n                {\n                    \"id\": \"d32f99b8-7dad-454b-a85c-5c6c98230e3c\",\n                    \"name\": \"Chronic heart disease\",\n                    \"urlSlug\": \"chronic-heart-disease\"\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "PublishedCohortLibraryGetBySlugName returns empty object if urlSlug is nonexistent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const responseJson = pm.response.json().data.PublishedCohortLibraryGetBySlugName;",
+							"",
+							"pm.test(\"The response returns empty object\", () => {",
+							"    pm.expect(responseJson).to.eql({});",
+							"});",
+							"",
+							"pm.test(\"The response headers contain correct Content-Type\", () => {",
+							"    pm.expect(pm.response).to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+						"variables": "{\n    \"urlSlug\":\"{{invalidUrlSlug}}\"\n}"
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetBySlugName returns empty object if urlSlug is nonexistent",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+								"variables": "{\n    \"urlSlug\":\"{{invalidUrlSlug}}\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Oct 2023 10:25:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": ""
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"34-fDxelrxCYaLeKNr43hzNs6xKyPg\""
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, x-requested-with, accept, content-type, nhsd-session-urid"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3628800"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, PUT, POST, DELETE"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"PublishedCohortLibraryGetBySlugName\": {}\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "PublishedCohortLibraryGetBySlugName returns error if urlSlug is a number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"The response returns error\", () => {",
+							"    pm.expect(responseJson.errors).to.be.a('array');",
+							"    pm.expect(responseJson.errors).to.have.lengthOf(1);",
+							"    pm.expect(responseJson.errors[0].message).to.eql('String cannot represent a non string value: 1');",
+							"",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: 1 ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetBySlugName returns error if urlSlug is a number",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: 1 ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Oct 2023 10:33:51 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "160"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"a0-+56NzD+6U53EL21jNP/e+NxVdw0\""
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"message\": \"String cannot represent a non string value: 1\",\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 50\n                }\n            ],\n            \"extensions\": {\n                \"code\": \"GRAPHQL_VALIDATION_FAILED\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "PublishedCohortLibraryGetBySlugName returns error if urlSlug is null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"The response returns error\", () => {",
+							"    pm.expect(responseJson.errors).to.be.a('array');",
+							"    pm.expect(responseJson.errors).to.have.lengthOf(1);",
+							"    pm.expect(responseJson.errors[0].message).to.eql('Expected value of type \\\"String!\\\", found null.');",
+							"",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: null ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetBySlugName returns error if urlSlug is a number",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: null ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Oct 2023 09:48:23 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "162"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"a2-I6ZuCystxKAy1MX6TroiuKOBy/U\""
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"message\": \"Expected value of type \\\"String!\\\", found null.\",\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 50\n                }\n            ],\n            \"extensions\": {\n                \"code\": \"GRAPHQL_VALIDATION_FAILED\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "PublishedCohortLibraryGetBySlugName returns error if we enquire a nonexistent field",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"The response returns error\", () => {",
+							"    pm.expect(responseJson.errors).to.be.a('array');",
+							"    pm.expect(responseJson.errors).to.have.lengthOf(1);",
+							"    pm.expect(responseJson.errors[0].message).to.eql(\"Cannot query field \\\"surname\\\" on type \\\"Cohort\\\". Did you mean \\\"name\\\" or \\\"shortName\\\"?\");",
+							"",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            surname\n        }\n    }\n}\n",
+						"variables": "{\n    \"urlSlug\":\"{{validUrlSlug}}\"\n}"
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetBySlugName returns error if we enquire a nonexistent field",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            surname\n        }\n    }\n}\n",
+								"variables": "{\n    \"urlSlug\":\"{{validUrlSlug}}\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Oct 2023 10:33:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "205"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"cd-ElwHtH9RNeThwwMONNX8/TZ7AXs\""
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"message\": \"Cannot query field \\\"surname\\\" on type \\\"Cohort\\\". Did you mean \\\"name\\\" or \\\"shortName\\\"?\",\n            \"locations\": [\n                {\n                    \"line\": 7,\n                    \"column\": 13\n                }\n            ],\n            \"extensions\": {\n                \"code\": \"GRAPHQL_VALIDATION_FAILED\"\n            }\n        }\n    ]\n}"
 				}
 			]
 		},
@@ -308,6 +780,121 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"data\": {\n        \"PublishedCohortLibraryGetAll\": [\n            {\n                \"authors\": \"[\\\"Author name\\\"]\",\n                \"clinicalAtRiskGroupsText\": \"The links below provide detailed information on the clinical rules that determine who is eligible for the booster.\\n\\nThe rules apply to:\\n- children aged 5 to 15 years within specific clinical at-risk groups\\n- adults ages 16 years and over\\n\\nThe clinical at-risk groups are:\",\n                \"id\": \"d63d834b-861d-405a-bad7-255896885ffc\",\n                \"commissioner\": \"NHS-E\",\n                \"demographicsText\": \"All those aged 5 years or older in the clinical risk groups shown in Tables 3 and 4 of the Green Book.\",\n                \"description\": \"The autumn booster is being offered to those at high risk of the complications of infection. The booster should help to reduce their risk of being admitted to hospital.\",\n                \"disclaimerText\": \"The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book and associated assumptions.\",\n                \"fixedDateReference\": null,\n                \"lastUpdated\": \"2023-09-25T12:46:17.727Z\",\n                \"name\": \"Autumn booster vaccinations\",\n                \"purpose\": \"Direct care\",\n                \"shortName\": \"Vaccine\",\n                \"summary\": \"NHS England commissioned Cohort as a Service (CaaS) to identify people that were eligible for the autumn booster vaccination.\\nTo be eligible, they needed to be:\\n- children aged 5 to 15 years\\n- adults aged 16 years and over\\n- in defined clinical risk groups shown in tables 3 and 4 of the [Green Book]( https://www.gov.uk/government/publications/)\\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met the rules.\\nThe data collected helped to:\\n- contact or remind people to receive their  autumn booster\\n- focus protection on those at clinical risk\\n- report and monitor on the autumn booster campaign\",\n                \"urlSlug\": \"booster-vaccinations-v1\"\n            },\n            {\n                \"authors\": \"[\\\"Author name\\\"]\",\n                \"clinicalAtRiskGroupsText\": \"The condition groups listed below provide detailed information on who is included and excluded from the digital cohort.\\n\\nThe list is not exhaustive, and decisions should be based on clinical judgement.\\n\\nThe clinical at-risk groups are:\",\n                \"id\": \"220de6d4-62f8-4757-8f27-177817ce0085\",\n                \"commissioner\": \"NHS-E vaccination programme's Tech and Data workstream, delivered by NHS Digital.\",\n                \"demographicsText\": \"All people aged 6 months or older that are in the clinical risk groups shown in the Green Book.\",\n                \"description\": \"The vaccination is recommended for all people over 6 months of age. It provides protection to those who are at higher risk of serious illness.\",\n                \"disclaimerText\": \"The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book and associated assumptions.\",\n                \"fixedDateReference\": null,\n                \"lastUpdated\": \"2023-09-25T12:46:17.727Z\",\n                \"name\": \"Vaccinations 2022 to 2023\",\n                \"purpose\": \"Direct Care\",\n                \"shortName\": \"Vaccination cohort\",\n                \"summary\": \"NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the 2022 to 2023 vaccination.\\nTo be eligible, they needed to be:\\n- 6 months of age or older\\n- in defined clinical risk groups shown in the [Green Book](https://www.gov.uk/government/publications/)\\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\\nThe data collected helped to:\\n- contact or remind people to receive their vaccination between 1 September 2022 and 31 March 2023\\n- focus protection on those at a clinical risk\\n- monitor the number of people who received the vaccination\",\n                \"urlSlug\": \"22-to-23\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "PublishedCohortLibraryGetAll throws an error when invalid parameters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"The response returns error\", () => {",
+							"    pm.expect(responseJson.errors).to.be.a('array');",
+							"    pm.expect(responseJson.errors).to.have.lengthOf(1);",
+							"    pm.expect(responseJson.errors[0].message).to.eql(\"Cannot query field \\\"surname\\\" on type \\\"Cohort\\\". Did you mean \\\"name\\\" or \\\"shortName\\\"?\");",
+							"",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        name\n        surname\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetAll throws an error when invalid parameters",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        name\n        surname\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Oct 2023 09:49:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "204"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"cc-nObTun+22qoiiA32SqtNRMqNlGQ\""
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"message\": \"Cannot query field \\\"surname\\\" on type \\\"Cohort\\\". Did you mean \\\"name\\\" or \\\"shortName\\\"?\",\n            \"locations\": [\n                {\n                    \"line\": 5,\n                    \"column\": 9\n                }\n            ],\n            \"extensions\": {\n                \"code\": \"GRAPHQL_VALIDATION_FAILED\"\n            }\n        }\n    ]\n}"
 				}
 			]
 		},
@@ -592,6 +1179,21 @@
 		{
 			"key": "SandboxURL",
 			"value": "https://internal-dev-sandbox.api.service.nhs.uk/caas-published-cohort-definitions/api",
+			"type": "string"
+		},
+		{
+			"key": "validUrlSlug",
+			"value": "booster-vaccinations-v1",
+			"type": "string"
+		},
+		{
+			"key": "invalidUrlSlug",
+			"value": "fake-url-slug",
+			"type": "string"
+		},
+		{
+			"key": "integerUrlSlug",
+			"value": "1",
 			"type": "string"
 		}
 	]
