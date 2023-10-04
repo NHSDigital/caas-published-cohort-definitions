@@ -6,7 +6,7 @@
     "lint": "node_modules/.bin/openapi-generator-cli validate -i specification/caas-published-cohort-definitions.yaml",
     "publish": "./node_modules/.bin/openapi-generator-cli generate -i specification/caas-published-cohort-definitions.yaml --generator-key v3.0  -g openapi -o build && rm openapitools.json && mv build/openapi.json build/caas-published-cohort-definitions.json",
     "check-licenses": "node_modules/.bin/license-checker --failOn GPL --failOn LGPL",
-    "postman-test": "node_modules/.bin/newman run ./sandbox/postman/published-cohort-definitions.postman_collection.json"
+    "postman-test": "node_modules/.bin/newman run ./sandbox/postman/Published-Cohort-Definitions-API-Sandbox.postman_collection.json"
   },
   "author": "NHS Digital",
   "license": "MIT",

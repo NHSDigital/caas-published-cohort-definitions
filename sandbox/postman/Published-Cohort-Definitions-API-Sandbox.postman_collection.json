@@ -1,7 +1,8 @@
 {
 	"info": {
 		"_postman_id": "5ce2b578-3079-4ea9-a33e-06ed64a0ccb2",
-		"name": "published-cohort-definitions",
+		"name": "Published Cohort Definitions API - Sandbox",
+		"description": "This collection allows you to run a number of pre-generated requests to simulate responses from our sandbox environment.  \nThis environment requires no authentication and no upfront setup for you to use.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "18640524"
 	},
