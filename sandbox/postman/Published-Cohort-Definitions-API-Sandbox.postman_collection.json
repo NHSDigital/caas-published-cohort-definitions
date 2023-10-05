@@ -1,0 +1,1201 @@
+{
+	"info": {
+		"_postman_id": "5ce2b578-3079-4ea9-a33e-06ed64a0ccb2",
+		"name": "Published Cohort Definitions API - Sandbox",
+		"description": "This collection allows you to run a number of pre-generated requests to simulate responses from our sandbox environment.  \nThis environment requires no authentication and no upfront setup for you to use.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18640524"
+	},
+	"item": [
+		{
+			"name": "PublishedCohortLibraryGetBySlugName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const responseJson = pm.response.json().data.PublishedCohortLibraryGetBySlugName;",
+							"",
+							"pm.test(\"The response has all properties\", () => {",
+							"    pm.expect(responseJson.id).to.eql('d63d834b-861d-405a-bad7-255896885ffc');",
+							"    pm.expect(responseJson.name).to.eql('Autumn booster vaccinations');",
+							"    pm.expect(responseJson.urlSlug).to.eql('booster-vaccinations-v1');",
+							"    pm.expect(responseJson.conditionGroups).to.be.a('array');",
+							"    pm.expect(responseJson.conditionGroups).to.have.lengthOf(2);",
+							"",
+							"    pm.expect(responseJson.conditionGroups[0].id).to.eql('d1f83f16-ffe0-4784-b67c-89c27a11e16c');",
+							"    pm.expect(responseJson.conditionGroups[1].id).to.eql('d32f99b8-7dad-454b-a85c-5c6c98230e3c');",
+							"",
+							"    pm.expect(responseJson.conditionGroups[0].name).to.eql('Asplenia or dysfunction of the spleen');",
+							"    pm.expect(responseJson.conditionGroups[1].name).to.eql('Chronic heart disease');",
+							"",
+							"    pm.expect(responseJson.conditionGroups[0].urlSlug).to.eql('asplenia');",
+							"    pm.expect(responseJson.conditionGroups[1].urlSlug).to.eql('chronic-heart-disease');",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+						"variables": "{\n    \"urlSlug\":\"{{validUrlSlug}}\"\n}"
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetBySlugName",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+								"variables": "{\n    \"urlSlug\":\"{{validUrlSlug}}\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Oct 2023 10:25:18 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "413"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": ""
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"19d-/qhdpBmTIAc9I+FP2uqEKQn0u7c\""
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, x-requested-with, accept, content-type, nhsd-session-urid"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3628800"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, PUT, POST, DELETE"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"PublishedCohortLibraryGetBySlugName\": {\n            \"id\": \"d63d834b-861d-405a-bad7-255896885ffc\",\n            \"name\": \"Autumn booster vaccinations\",\n            \"urlSlug\": \"booster-vaccinations-v1\",\n            \"conditionGroups\": [\n                {\n                    \"id\": \"d1f83f16-ffe0-4784-b67c-89c27a11e16c\",\n                    \"name\": \"Asplenia or dysfunction of the spleen\",\n                    \"urlSlug\": \"asplenia\"\n                },\n                {\n                    \"id\": \"d32f99b8-7dad-454b-a85c-5c6c98230e3c\",\n                    \"name\": \"Chronic heart disease\",\n                    \"urlSlug\": \"chronic-heart-disease\"\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "PublishedCohortLibraryGetBySlugName returns empty object if urlSlug is nonexistent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const responseJson = pm.response.json().data.PublishedCohortLibraryGetBySlugName;",
+							"",
+							"pm.test(\"The response returns empty object\", () => {",
+							"    pm.expect(responseJson).to.eql({});",
+							"});",
+							"",
+							"pm.test(\"The response headers contain correct Content-Type\", () => {",
+							"    pm.expect(pm.response).to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+						"variables": "{\n    \"urlSlug\":\"{{invalidUrlSlug}}\"\n}"
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetBySlugName returns empty object if urlSlug is nonexistent",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+								"variables": "{\n    \"urlSlug\":\"{{invalidUrlSlug}}\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Oct 2023 10:25:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": ""
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"34-fDxelrxCYaLeKNr43hzNs6xKyPg\""
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, x-requested-with, accept, content-type, nhsd-session-urid"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3628800"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, PUT, POST, DELETE"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"PublishedCohortLibraryGetBySlugName\": {}\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "PublishedCohortLibraryGetBySlugName returns error if urlSlug is a number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"The response returns error\", () => {",
+							"    pm.expect(responseJson.errors).to.be.a('array');",
+							"    pm.expect(responseJson.errors).to.have.lengthOf(1);",
+							"    pm.expect(responseJson.errors[0].message).to.eql('String cannot represent a non string value: 1');",
+							"",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: 1 ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetBySlugName returns error if urlSlug is a number",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: 1 ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Oct 2023 10:33:51 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "160"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"a0-+56NzD+6U53EL21jNP/e+NxVdw0\""
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"message\": \"String cannot represent a non string value: 1\",\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 50\n                }\n            ],\n            \"extensions\": {\n                \"code\": \"GRAPHQL_VALIDATION_FAILED\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "PublishedCohortLibraryGetBySlugName returns error if urlSlug is null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"The response returns error\", () => {",
+							"    pm.expect(responseJson.errors).to.be.a('array');",
+							"    pm.expect(responseJson.errors).to.have.lengthOf(1);",
+							"    pm.expect(responseJson.errors[0].message).to.eql('Expected value of type \\\"String!\\\", found null.');",
+							"",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: null ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetBySlugName returns error if urlSlug is a number",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetBySlugName {\n    PublishedCohortLibraryGetBySlugName(urlSlug: null ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            conditionGroups {\n                id\n                name\n                urlSlug\n            }\n        }\n    }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Oct 2023 09:48:23 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "162"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"a2-I6ZuCystxKAy1MX6TroiuKOBy/U\""
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"message\": \"Expected value of type \\\"String!\\\", found null.\",\n            \"locations\": [\n                {\n                    \"line\": 2,\n                    \"column\": 50\n                }\n            ],\n            \"extensions\": {\n                \"code\": \"GRAPHQL_VALIDATION_FAILED\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "PublishedCohortLibraryGetBySlugName returns error if we enquire a nonexistent field",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"The response returns error\", () => {",
+							"    pm.expect(responseJson.errors).to.be.a('array');",
+							"    pm.expect(responseJson.errors).to.have.lengthOf(1);",
+							"    pm.expect(responseJson.errors[0].message).to.eql(\"Cannot query field \\\"surname\\\" on type \\\"Cohort\\\". Did you mean \\\"name\\\" or \\\"shortName\\\"?\");",
+							"",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            surname\n        }\n    }\n}\n",
+						"variables": "{\n    \"urlSlug\":\"{{validUrlSlug}}\"\n}"
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetBySlugName returns error if we enquire a nonexistent field",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetBySlugName($urlSlug: String!) {\n    PublishedCohortLibraryGetBySlugName(urlSlug: $urlSlug ) {\n        ... on Cohort {\n            id\n            name\n            urlSlug\n            surname\n        }\n    }\n}\n",
+								"variables": "{\n    \"urlSlug\":\"{{validUrlSlug}}\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Oct 2023 10:33:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "205"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"cd-ElwHtH9RNeThwwMONNX8/TZ7AXs\""
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"message\": \"Cannot query field \\\"surname\\\" on type \\\"Cohort\\\". Did you mean \\\"name\\\" or \\\"shortName\\\"?\",\n            \"locations\": [\n                {\n                    \"line\": 7,\n                    \"column\": 13\n                }\n            ],\n            \"extensions\": {\n                \"code\": \"GRAPHQL_VALIDATION_FAILED\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "PublishedCohortLibraryGetAll",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const responseJson = pm.response.json().data.PublishedCohortLibraryGetAll;",
+							"",
+							"pm.test(\"The response has all properties\", () => {",
+							"    pm.expect(responseJson).to.have.lengthOf(2);",
+							"",
+							"    pm.expect(responseJson[0].authors).to.eql('[\\\"Author name\\\"]');",
+							"    pm.expect(responseJson[1].authors).to.eql('[\\\"Author name\\\"]');",
+							"",
+							"    pm.expect(responseJson[0].clinicalAtRiskGroupsText).to.eql('The links below provide detailed information on the clinical rules that determine who is eligible for the booster.\\n\\nThe rules apply to:\\n- children aged 5 to 15 years within specific clinical at-risk groups\\n- adults ages 16 years and over\\n\\nThe clinical at-risk groups are:');",
+							"    pm.expect(responseJson[1].clinicalAtRiskGroupsText).to.eql('The condition groups listed below provide detailed information on who is included and excluded from the digital cohort.\\n\\nThe list is not exhaustive, and decisions should be based on clinical judgement.\\n\\nThe clinical at-risk groups are:');",
+							"",
+							"    pm.expect(responseJson[0].id).to.eql('d63d834b-861d-405a-bad7-255896885ffc');",
+							"    pm.expect(responseJson[1].id).to.eql('220de6d4-62f8-4757-8f27-177817ce0085');",
+							"",
+							"    pm.expect(responseJson[0].commissioner).to.eql('NHS-E');",
+							"    pm.expect(responseJson[1].commissioner).to.eql('NHS-E vaccination programme\\'s Tech and Data workstream, delivered by NHS Digital.');",
+							"",
+							"    pm.expect(responseJson[0].demographicsText).to.eql('All those aged 5 years or older in the clinical risk groups shown in Tables 3 and 4 of the Green Book.');",
+							"    pm.expect(responseJson[1].demographicsText).to.eql('All people aged 6 months or older that are in the clinical risk groups shown in the Green Book.');",
+							"",
+							"    pm.expect(responseJson[0].description).to.eql('The autumn booster is being offered to those at high risk of the complications of infection. The booster should help to reduce their risk of being admitted to hospital.');",
+							"    pm.expect(responseJson[1].description).to.eql('The vaccination is recommended for all people over 6 months of age. It provides protection to those who are at higher risk of serious illness.');",
+							"",
+							"    pm.expect(responseJson[0].disclaimerText).to.eql('The information provided outlines CaaS\\'s approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book and associated assumptions.');",
+							"    pm.expect(responseJson[1].disclaimerText).to.eql('The information provided outlines CaaS\\'s approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book and associated assumptions.');",
+							"",
+							"    pm.expect(responseJson[0].fixedDateReference).to.eql(null);",
+							"    pm.expect(responseJson[1].fixedDateReference).to.eql(null);",
+							"",
+							"    pm.expect(responseJson[0].lastUpdated).to.eql('2023-09-25T12:46:17.727Z');",
+							"    pm.expect(responseJson[1].lastUpdated).to.eql('2023-09-25T12:46:17.727Z');",
+							"",
+							"    pm.expect(responseJson[0].name).to.eql('Autumn booster vaccinations');",
+							"    pm.expect(responseJson[1].name).to.eql('Vaccinations 2022 to 2023');",
+							"",
+							"    pm.expect(responseJson[0].purpose).to.eql('Direct care');",
+							"    pm.expect(responseJson[1].purpose).to.eql('Direct Care');",
+							"",
+							"",
+							"    pm.expect(responseJson[0].shortName).to.eql('Vaccine');",
+							"    pm.expect(responseJson[1].shortName).to.eql('Vaccination cohort');",
+							"",
+							"",
+							"    pm.expect(responseJson[0].summary).to.eql('NHS England commissioned Cohort as a Service (CaaS) to identify people that were eligible for the autumn booster vaccination.\\nTo be eligible, they needed to be:\\n- children aged 5 to 15 years\\n- adults aged 16 years and over\\n- in defined clinical risk groups shown in tables 3 and 4 of the [Green Book]( https://www.gov.uk/government/publications/)\\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met the rules.\\nThe data collected helped to:\\n- contact or remind people to receive their  autumn booster\\n- focus protection on those at clinical risk\\n- report and monitor on the autumn booster campaign');",
+							"    pm.expect(responseJson[1].summary).to.eql('NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the 2022 to 2023 vaccination.\\nTo be eligible, they needed to be:\\n- 6 months of age or older\\n- in defined clinical risk groups shown in the [Green Book](https://www.gov.uk/government/publications/)\\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\\nThe data collected helped to:\\n- contact or remind people to receive their vaccination between 1 September 2022 and 31 March 2023\\n- focus protection on those at a clinical risk\\n- monitor the number of people who received the vaccination');",
+							"",
+							"",
+							"    pm.expect(responseJson[0].urlSlug).to.eql('booster-vaccinations-v1');",
+							"    pm.expect(responseJson[1].urlSlug).to.eql('22-to-23');",
+							"",
+							"",
+							"",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        lastUpdated\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetAll",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        lastUpdated\n        name\n        purpose\n        shortName\n        summary\n        urlSlug\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 03 Oct 2023 11:29:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3680"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": ""
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"e60-K9ty1JKixTZbLrME40u9f2nHFik\""
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, x-requested-with, accept, content-type, nhsd-session-urid"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3628800"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, PUT, POST, DELETE"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"PublishedCohortLibraryGetAll\": [\n            {\n                \"authors\": \"[\\\"Author name\\\"]\",\n                \"clinicalAtRiskGroupsText\": \"The links below provide detailed information on the clinical rules that determine who is eligible for the booster.\\n\\nThe rules apply to:\\n- children aged 5 to 15 years within specific clinical at-risk groups\\n- adults ages 16 years and over\\n\\nThe clinical at-risk groups are:\",\n                \"id\": \"d63d834b-861d-405a-bad7-255896885ffc\",\n                \"commissioner\": \"NHS-E\",\n                \"demographicsText\": \"All those aged 5 years or older in the clinical risk groups shown in Tables 3 and 4 of the Green Book.\",\n                \"description\": \"The autumn booster is being offered to those at high risk of the complications of infection. The booster should help to reduce their risk of being admitted to hospital.\",\n                \"disclaimerText\": \"The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book and associated assumptions.\",\n                \"fixedDateReference\": null,\n                \"lastUpdated\": \"2023-09-25T12:46:17.727Z\",\n                \"name\": \"Autumn booster vaccinations\",\n                \"purpose\": \"Direct care\",\n                \"shortName\": \"Vaccine\",\n                \"summary\": \"NHS England commissioned Cohort as a Service (CaaS) to identify people that were eligible for the autumn booster vaccination.\\nTo be eligible, they needed to be:\\n- children aged 5 to 15 years\\n- adults aged 16 years and over\\n- in defined clinical risk groups shown in tables 3 and 4 of the [Green Book]( https://www.gov.uk/government/publications/)\\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met the rules.\\nThe data collected helped to:\\n- contact or remind people to receive their  autumn booster\\n- focus protection on those at clinical risk\\n- report and monitor on the autumn booster campaign\",\n                \"urlSlug\": \"booster-vaccinations-v1\"\n            },\n            {\n                \"authors\": \"[\\\"Author name\\\"]\",\n                \"clinicalAtRiskGroupsText\": \"The condition groups listed below provide detailed information on who is included and excluded from the digital cohort.\\n\\nThe list is not exhaustive, and decisions should be based on clinical judgement.\\n\\nThe clinical at-risk groups are:\",\n                \"id\": \"220de6d4-62f8-4757-8f27-177817ce0085\",\n                \"commissioner\": \"NHS-E vaccination programme's Tech and Data workstream, delivered by NHS Digital.\",\n                \"demographicsText\": \"All people aged 6 months or older that are in the clinical risk groups shown in the Green Book.\",\n                \"description\": \"The vaccination is recommended for all people over 6 months of age. It provides protection to those who are at higher risk of serious illness.\",\n                \"disclaimerText\": \"The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book and associated assumptions.\",\n                \"fixedDateReference\": null,\n                \"lastUpdated\": \"2023-09-25T12:46:17.727Z\",\n                \"name\": \"Vaccinations 2022 to 2023\",\n                \"purpose\": \"Direct Care\",\n                \"shortName\": \"Vaccination cohort\",\n                \"summary\": \"NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the 2022 to 2023 vaccination.\\nTo be eligible, they needed to be:\\n- 6 months of age or older\\n- in defined clinical risk groups shown in the [Green Book](https://www.gov.uk/government/publications/)\\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\\nThe data collected helped to:\\n- contact or remind people to receive their vaccination between 1 September 2022 and 31 March 2023\\n- focus protection on those at a clinical risk\\n- monitor the number of people who received the vaccination\",\n                \"urlSlug\": \"22-to-23\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "PublishedCohortLibraryGetAll throws an error when invalid parameters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"The response returns error\", () => {",
+							"    pm.expect(responseJson.errors).to.be.a('array');",
+							"    pm.expect(responseJson.errors).to.have.lengthOf(1);",
+							"    pm.expect(responseJson.errors[0].message).to.eql(\"Cannot query field \\\"surname\\\" on type \\\"Cohort\\\". Did you mean \\\"name\\\" or \\\"shortName\\\"?\");",
+							"",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        name\n        surname\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PublishedCohortLibraryGetAll throws an error when invalid parameters",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        name\n        surname\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Oct 2023 09:49:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "204"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"cc-nObTun+22qoiiA32SqtNRMqNlGQ\""
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"message\": \"Cannot query field \\\"surname\\\" on type \\\"Cohort\\\". Did you mean \\\"name\\\" or \\\"shortName\\\"?\",\n            \"locations\": [\n                {\n                    \"line\": 5,\n                    \"column\": 9\n                }\n            ],\n            \"extensions\": {\n                \"code\": \"GRAPHQL_VALIDATION_FAILED\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "NestedPublishedCohortLibraryGetAll",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const responseJson = pm.response.json().data.PublishedCohortLibraryGetAll;",
+							"",
+							"pm.test(\"The response has all properties\", () => {",
+							"    pm.expect(responseJson).to.have.lengthOf(2);",
+							"",
+							"    pm.expect(responseJson[0].shortName).to.eql('Vaccine');",
+							"    pm.expect(responseJson[1].shortName).to.eql('Vaccination cohort');",
+							"",
+							"    pm.expect(responseJson[0].urlSlug).to.eql('booster-vaccinations-v1');",
+							"    pm.expect(responseJson[1].urlSlug).to.eql('22-to-23');",
+							"",
+							"    pm.expect(responseJson[0].conditionGroups).to.have.lengthOf(2);",
+							"    pm.expect(responseJson[0].conditionGroups[0].name).to.eql('Asplenia or dysfunction of the spleen');",
+							"    pm.expect(responseJson[0].conditionGroups[0].urlSlug).to.eql('asplenia');",
+							"    pm.expect(responseJson[0].conditionGroups[0].conditions).to.have.lengthOf(2);",
+							"    pm.expect(responseJson[0].conditionGroups[0].conditions[0].description).to.eql('People with asplenia or dysfunction of the spleen');",
+							"    pm.expect(responseJson[0].conditionGroups[0].conditions[0].rulesets).to.have.lengthOf(1);",
+							"    pm.expect(responseJson[0].conditionGroups[0].conditions[0].rulesets[0].rules).to.have.lengthOf(1);",
+							"    pm.expect(responseJson[0].conditionGroups[0].conditions[0].rulesets[0].rules[0].codeListInclusions).to.have.lengthOf(1);",
+							"    pm.expect(responseJson[0].conditionGroups[0].conditions[0].rulesets[0].rules[0].codeListInclusions[0].clusterName).to.eql('SPHEROCYTOSIS_COD');",
+							"",
+							"    pm.expect(responseJson[1].conditionGroups).to.have.lengthOf(2);",
+							"    pm.expect(responseJson[1].conditionGroups[1].conditions).to.have.lengthOf(1);",
+							"",
+							"",
+							"",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        id\n        shortName\n        summary\n        urlSlug\n        conditionGroups {\n            id\n            name\n            urlSlug\n            conditions {\n                id\n                description\n                nonDigitalPathwayText\n                rulesets {\n                    id\n                    rules {\n                        id\n                        codeListInclusions {\n                            id\n                            clusterName\n                            shortDescription\n                        }\n                    }\n                }\n            }\n        }\n    }\n}\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "NestedPublishedCohortLibraryGetAll",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetAll {\n    PublishedCohortLibraryGetAll {\n        authors\n        id\n        shortName\n        summary\n        urlSlug\n        conditionGroups {\n            id\n            name\n            urlSlug\n            conditions {\n                id\n                description\n                nonDigitalPathwayText\n                rulesets {\n                    id\n                    rules {\n                        id\n                        codeListInclusions {\n                            id\n                            clusterName\n                            shortDescription\n                        }\n                    }\n                }\n            }\n        }\n    }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 03 Oct 2023 11:30:10 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "6424"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": ""
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"1918-98q0yvtUHRbwpzcM6Hngb+z0bA8\""
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, x-requested-with, accept, content-type, nhsd-session-urid"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3628800"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, PUT, POST, DELETE"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"PublishedCohortLibraryGetAll\": [\n            {\n                \"authors\": \"[\\\"Author name\\\"]\",\n                \"id\": \"d63d834b-861d-405a-bad7-255896885ffc\",\n                \"shortName\": \"Vaccine\",\n                \"summary\": \"NHS England commissioned Cohort as a Service (CaaS) to identify people that were eligible for the autumn booster vaccination.\\nTo be eligible, they needed to be:\\n- children aged 5 to 15 years\\n- adults aged 16 years and over\\n- in defined clinical risk groups shown in tables 3 and 4 of the [Green Book]( https://www.gov.uk/government/publications/)\\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met the rules.\\nThe data collected helped to:\\n- contact or remind people to receive their  autumn booster\\n- focus protection on those at clinical risk\\n- report and monitor on the autumn booster campaign\",\n                \"urlSlug\": \"booster-vaccinations-v1\",\n                \"conditionGroups\": [\n                    {\n                        \"id\": \"d1f83f16-ffe0-4784-b67c-89c27a11e16c\",\n                        \"name\": \"Asplenia or dysfunction of the spleen\",\n                        \"urlSlug\": \"asplenia\",\n                        \"conditions\": [\n                            {\n                                \"id\": \"b8dba333-400d-4d86-b73f-299f649e3e4e\",\n                                \"description\": \"People with asplenia or dysfunction of the spleen\",\n                                \"nonDigitalPathwayText\": \"There is no clinically agreed list of these conditions, so the code clusters may be incomplete.\\nThis means that some people with these conditions may not be included in the CaaS digital pathway.\",\n                                \"rulesets\": [\n                                    {\n                                        \"id\": \"77db75e7-686d-4abd-aca5-2b6830ac732a\",\n                                        \"rules\": [\n                                            {\n                                                \"id\": \"1950be08-91f2-4b7b-8bcb-4f7b92ab26a7\",\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"80d0ae8a-0892-498d-a790-b687d8ee8772\",\n                                                        \"clusterName\": \"SPHEROCYTOSIS_COD\",\n                                                        \"shortDescription\": \"Hereditary spherocytosis diagnosis\"\n                                                    }\n                                                ]\n                                            }\n                                        ]\n                                    }\n                                ]\n                            },\n                            {\n                                \"id\": \"7e5f2514-eea6-4cc7-a5d1-89b400123c95\",\n                                \"description\": \"People with asplenia; splenic dysfunction such as thalassemia major and coeliac syndrome\",\n                                \"nonDigitalPathwayText\": \"There is no clinically agreed list of these conditions, so code clusters may be incomplete.\\nThis means that some people with these conditions may not be included in the CaaS digital pathway.\",\n                                \"rulesets\": [\n                                    {\n                                        \"id\": \"fcc225f8-ffa8-4465-a072-f31170532635\",\n                                        \"rules\": [\n                                            {\n                                                \"id\": \"15c1bd38-09c2-4a5a-b288-ff6def90ea73\",\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"8468ecd5-2a6c-4299-b1ad-a5a08381208e\",\n                                                        \"clusterName\": \"SPLENIC_COD\",\n                                                        \"shortDescription\": \"Asplenia and splenic dysfunction\"\n                                                    },\n                                                    {\n                                                        \"id\": \"b1386cd0-d7aa-4624-b0ba-8cdf69066f42\",\n                                                        \"clusterName\": \"THAL_COD\",\n                                                        \"shortDescription\": \"Thalassaemia\"\n                                                    }\n                                                ]\n                                            }\n                                        ]\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": \"d32f99b8-7dad-454b-a85c-5c6c98230e3c\",\n                        \"name\": \"Chronic heart disease\",\n                        \"urlSlug\": \"chronic-heart-disease\",\n                        \"conditions\": [\n                            {\n                                \"id\": \"2f4660d4-54b8-4303-9657-d7e1c63359d1\",\n                                \"description\": \"People requiring regular medication and/or follow-up for ischaemic heart disease\\nThis includes:\\n- atrial fibrillation\\n- peripheral vascular disease\\n- a history of venous thromboembolism\",\n                                \"nonDigitalPathwayText\": \"All conditions are included in the CaaS digital pathway\",\n                                \"rulesets\": [\n                                    {\n                                        \"id\": \"7626d7eb-f1b3-467e-b3bf-226aeac815a6\",\n                                        \"rules\": [\n                                            {\n                                                \"id\": \"58d1ff4c-b21d-4a26-96c7-b3f89eeaa5c3\",\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"9a9f346f-00cc-4211-a345-12ba8b1e1964\",\n                                                        \"clusterName\": \"AFIB_COD\",\n                                                        \"shortDescription\": \"Atrial fibrillation\"\n                                                    },\n                                                    {\n                                                        \"id\": \"34924389-3537-4a2d-b2c1-3ded311319d8\",\n                                                        \"clusterName\": \"PAD_COD\",\n                                                        \"shortDescription\": \"Peripheral arterial disease diagnostic\"\n                                                    }\n                                                ]\n                                            }\n                                        ]\n                                    }\n                                ]\n                            },\n                            {\n                                \"id\": \"083cacb1-8dcc-464c-aeba-67714c844772\",\n                                \"description\": \"People with:\\n- congenital heart disease\\n- hypertension with cardiac complications\\n- chronic heart failure\",\n                                \"nonDigitalPathwayText\": \"All conditions are included in the CaaS digital pathway\",\n                                \"rulesets\": [\n                                    {\n                                        \"id\": \"c5865172-8538-4e6b-a9af-391f750d7aac\",\n                                        \"rules\": [\n                                            {\n                                                \"id\": \"1ac39f30-27a0-4a43-8242-11bd342f826d\",\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"29994865-aaad-4721-ab48-7700260e7a0b\",\n                                                        \"clusterName\": \"CHRONHD_COD\",\n                                                        \"shortDescription\": \"Chronic heart disease\"\n                                                    },\n                                                    {\n                                                        \"id\": \"ebf18501-c7d4-4241-a535-8706236ac583\",\n                                                        \"clusterName\": \"\",\n                                                        \"shortDescription\": \"ICD-10 code for congenital heart disease (people over 5 years of age)\"\n                                                    }\n                                                ]\n                                            },\n                                            {\n                                                \"id\": \"37fdc64a-49a1-4245-bdd5-bcdf05b2f970\",\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"baed8421-bd83-49d7-9b5e-4445b83e7c93\",\n                                                        \"clusterName\": \"CHRONHD_COD\",\n                                                        \"shortDescription\": \"Chronic heart disease\"\n                                                    },\n                                                    {\n                                                        \"id\": \"92489dca-2c5f-43f6-9ee6-fbaac0d0cf4c\",\n                                                        \"clusterName\": \"\",\n                                                        \"shortDescription\": \"ICD-10 code for congenital heart disease (people over 16 years of age)\"\n                                                    }\n                                                ]\n                                            }\n                                        ]\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            },\n            {\n                \"authors\": \"[\\\"Author name\\\"]\",\n                \"id\": \"220de6d4-62f8-4757-8f27-177817ce0085\",\n                \"shortName\": \"Vaccination cohort\",\n                \"summary\": \"NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the 2022 to 2023 vaccination.\\nTo be eligible, they needed to be:\\n- 6 months of age or older\\n- in defined clinical risk groups shown in the [Green Book](https://www.gov.uk/government/publications/)\\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\\nThe data collected helped to:\\n- contact or remind people to receive their vaccination between 1 September 2022 and 31 March 2023\\n- focus protection on those at a clinical risk\\n- monitor the number of people who received the vaccination\",\n                \"urlSlug\": \"22-to-23\",\n                \"conditionGroups\": [\n                    {\n                        \"id\": \"b867218e-9ec1-43f9-b0ef-b2ae1fc99fa8\",\n                        \"name\": \"Chronic heart disease (2022 to 2023)\",\n                        \"urlSlug\": \"22-to-23-chronic-heart-disease\",\n                        \"conditions\": [\n                            {\n                                \"id\": \"d144ace1-59b4-4f69-8390-0034140d3109\",\n                                \"description\": \"People with:\\n- congenital heart disease with cardiac complications\\n- chronic heart failure\\n- regular medication and/or follow-up for ischaemic heart disease\",\n                                \"nonDigitalPathwayText\": \"All conditions are included in the CaaS digital pathway\",\n                                \"rulesets\": [\n                                    {\n                                        \"id\": \"9acd789d-c3be-4ca0-be63-e075aad0100f\",\n                                        \"rules\": [\n                                            {\n                                                \"id\": \"bed9a06c-1d98-4629-a549-66063e4ebec5\",\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"e5d7bc31-bed2-42a9-ad2f-b8f20b2f49e5\",\n                                                        \"clusterName\": \"CHRONHD_COD\",\n                                                        \"shortDescription\": \"Chronic heart disease\"\n                                                    }\n                                                ]\n                                            }\n                                        ]\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": \"ae0324d0-3fed-4766-bae2-26e089b78b8a\",\n                        \"name\": \"Chronic kidney disease\",\n                        \"urlSlug\": \"chronic-kidney-disease\",\n                        \"conditions\": [\n                            {\n                                \"id\": \"8f1d31a9-784a-41cb-81f7-84b907248be4\",\n                                \"description\": \"People with:\\n- chronic kidney disease at stage 3, 4 or 5\\n- chronic kidney failure\\n- nephrotic syndrome\\n- kidney transplant\",\n                                \"nonDigitalPathwayText\": \"All conditions are included in the CaaS digital pathway\",\n                                \"rulesets\": [\n                                    {\n                                        \"id\": \"9af0456b-aa6e-4dd4-80a8-be5d3fba6e41\",\n                                        \"rules\": [\n                                            {\n                                                \"id\": \"125e8692-9299-4001-8a33-bb06b9cee6b1\",\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"d480eb36-5aa9-4e3c-91ab-9757cd19909e\",\n                                                        \"clusterName\": \"CKDATRISK2_COD\",\n                                                        \"shortDescription\": \"Chronic kidney disease stage 3, 4 or 5\"\n                                                    }\n                                                ]\n                                            }\n                                        ]\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "BigDataPublishedCohortLibraryGetAll",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query PublishedCohortLibraryGetAll {\n  PublishedCohortLibraryGetAll {\n    __typename\n    ... on Cohort {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        name\n        purpose\n        shortName\n        urlSlug\n        summary\n        conditionGroups {\n            id\n            nonDigitalPathwayOverview\n            ruleLogicOverview\n            urlSlug\n            name\n            conditions {\n                id\n                description\n                nonDigitalPathwayText\n                rulesets {\n                    logicallyAndRules\n                    rules {\n                        codeListInclusions {\n                            id\n                            shortDescription\n                            clusterName\n                        }\n                        codeListsResolving {\n                            id\n                            shortDescription\n                            clusterName\n                        }\n                        patientAgeConstraints {\n                            minAgeMonths\n                            maxAgeMonths\n                        }\n                        eventDateConstraint {\n                            withinLastMonths\n                            relativeEarliestTime\n                            relativeLatestTime\n                        }\n                        eventCountConstraint {\n                            count\n                        }\n                    }\n                }\n            }\n        }\n\t}\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{SandboxURL}}",
+					"host": [
+						"{{SandboxURL}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "BigDataPublishedCohortLibraryGetAll",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PublishedCohortLibraryGetAll {\n  PublishedCohortLibraryGetAll {\n    __typename\n    ... on Cohort {\n        authors\n        clinicalAtRiskGroupsText\n        id\n        commissioner\n        demographicsText\n        description\n        disclaimerText\n        fixedDateReference\n        name\n        purpose\n        shortName\n        urlSlug\n        summary\n        conditionGroups {\n            id\n            nonDigitalPathwayOverview\n            ruleLogicOverview\n            urlSlug\n            name\n            conditions {\n                id\n                description\n                nonDigitalPathwayText\n                rulesets {\n                    logicallyAndRules\n                    rules {\n                        codeListInclusions {\n                            id\n                            shortDescription\n                            clusterName\n                        }\n                        codeListsResolving {\n                            id\n                            shortDescription\n                            clusterName\n                        }\n                        patientAgeConstraints {\n                            minAgeMonths\n                            maxAgeMonths\n                        }\n                        eventDateConstraint {\n                            withinLastMonths\n                            relativeEarliestTime\n                            relativeLatestTime\n                        }\n                        eventCountConstraint {\n                            count\n                        }\n                    }\n                }\n            }\n        }\n\t}\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{SandboxURL}}",
+							"host": [
+								"{{SandboxURL}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 03 Oct 2023 12:46:08 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "12632"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": ""
+						},
+						{
+							"key": "x-api-key",
+							"value": "key_undefined"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-store"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"3158-ZnFyBfZKrs1yVefsMkAS9VtqdNA\""
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, x-requested-with, accept, content-type, nhsd-session-urid"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3628800"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, PUT, POST, DELETE"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"PublishedCohortLibraryGetAll\": [\n            {\n                \"__typename\": \"Cohort\",\n                \"authors\": \"[\\\"Author name\\\"]\",\n                \"clinicalAtRiskGroupsText\": \"The links below provide detailed information on the clinical rules that determine who is eligible for the booster.\\n\\nThe rules apply to:\\n- children aged 5 to 15 years within specific clinical at-risk groups\\n- adults ages 16 years and over\\n\\nThe clinical at-risk groups are:\",\n                \"id\": \"d63d834b-861d-405a-bad7-255896885ffc\",\n                \"commissioner\": \"NHS-E\",\n                \"demographicsText\": \"All those aged 5 years or older in the clinical risk groups shown in Tables 3 and 4 of the Green Book.\",\n                \"description\": \"The autumn booster is being offered to those at high risk of the complications of infection. The booster should help to reduce their risk of being admitted to hospital.\",\n                \"disclaimerText\": \"The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book and associated assumptions.\",\n                \"fixedDateReference\": null,\n                \"name\": \"Autumn booster vaccinations\",\n                \"purpose\": \"Direct care\",\n                \"shortName\": \"Vaccine\",\n                \"urlSlug\": \"booster-vaccinations-v1\",\n                \"summary\": \"NHS England commissioned Cohort as a Service (CaaS) to identify people that were eligible for the autumn booster vaccination.\\nTo be eligible, they needed to be:\\n- children aged 5 to 15 years\\n- adults aged 16 years and over\\n- in defined clinical risk groups shown in tables 3 and 4 of the [Green Book]( https://www.gov.uk/government/publications/)\\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met the rules.\\nThe data collected helped to:\\n- contact or remind people to receive their  autumn booster\\n- focus protection on those at clinical risk\\n- report and monitor on the autumn booster campaign\",\n                \"conditionGroups\": [\n                    {\n                        \"id\": \"d1f83f16-ffe0-4784-b67c-89c27a11e16c\",\n                        \"nonDigitalPathwayOverview\": \"If a person receives care from another healthcare provider, for example a hospital, specialist, or community clinic, their GP record is not automatically updated.\\nIf a person’s GP record is not up-to-date when creating a cohort, they may not be included in the digital pathway.\\nThis may result in a person not receiving the invite for their vaccination.\\nIf you believe you’re eligible for a vaccination, but have not received your invite, then [visit the NHS website on the vaccination](https://www.nhs.uk/) for more information.\",\n                        \"ruleLogicOverview\": \"The table below shows the clinical rules used to determine who should be contacted or reminded to receive their autumn booster vaccinations based on specific medical conditions.\\nThese conditions are detailed in the [Green Book](https://www.gov.uk/government/publications/).\",\n                        \"urlSlug\": \"asplenia\",\n                        \"name\": \"Asplenia or dysfunction of the spleen\",\n                        \"conditions\": [\n                            {\n                                \"id\": \"b8dba333-400d-4d86-b73f-299f649e3e4e\",\n                                \"description\": \"People with asplenia or dysfunction of the spleen\",\n                                \"nonDigitalPathwayText\": \"There is no clinically agreed list of these conditions, so the code clusters may be incomplete.\\nThis means that some people with these conditions may not be included in the CaaS digital pathway.\",\n                                \"rulesets\": [\n                                    {\n                                        \"logicallyAndRules\": true,\n                                        \"rules\": [\n                                            {\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"80d0ae8a-0892-498d-a790-b687d8ee8772\",\n                                                        \"shortDescription\": \"Hereditary spherocytosis diagnosis\",\n                                                        \"clusterName\": \"SPHEROCYTOSIS_COD\"\n                                                    }\n                                                ],\n                                                \"codeListsResolving\": [],\n                                                \"patientAgeConstraints\": [\n                                                    {\n                                                        \"minAgeMonths\": 60,\n                                                        \"maxAgeMonths\": 0\n                                                    }\n                                                ],\n                                                \"eventDateConstraint\": null,\n                                                \"eventCountConstraint\": null\n                                            }\n                                        ]\n                                    }\n                                ]\n                            },\n                            {\n                                \"id\": \"7e5f2514-eea6-4cc7-a5d1-89b400123c95\",\n                                \"description\": \"People with asplenia; splenic dysfunction such as thalassemia major and coeliac syndrome\",\n                                \"nonDigitalPathwayText\": \"There is no clinically agreed list of these conditions, so code clusters may be incomplete.\\nThis means that some people with these conditions may not be included in the CaaS digital pathway.\",\n                                \"rulesets\": [\n                                    {\n                                        \"logicallyAndRules\": false,\n                                        \"rules\": [\n                                            {\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"8468ecd5-2a6c-4299-b1ad-a5a08381208e\",\n                                                        \"shortDescription\": \"Asplenia and splenic dysfunction\",\n                                                        \"clusterName\": \"SPLENIC_COD\"\n                                                    },\n                                                    {\n                                                        \"id\": \"b1386cd0-d7aa-4624-b0ba-8cdf69066f42\",\n                                                        \"shortDescription\": \"Thalassaemia\",\n                                                        \"clusterName\": \"THAL_COD\"\n                                                    }\n                                                ],\n                                                \"codeListsResolving\": [],\n                                                \"patientAgeConstraints\": [\n                                                    {\n                                                        \"minAgeMonths\": 60,\n                                                        \"maxAgeMonths\": 0\n                                                    }\n                                                ],\n                                                \"eventDateConstraint\": null,\n                                                \"eventCountConstraint\": null\n                                            }\n                                        ]\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": \"d32f99b8-7dad-454b-a85c-5c6c98230e3c\",\n                        \"nonDigitalPathwayOverview\": \"If a person receives care from another healthcare provider, for example a hospital, specialist, or community clinic, their GP record is not automatically updated.\\nIf a person’s GP record is not up-to-date when creating a cohort, they may not be included in the digital pathway.\\nThis may result in a person not receiving the invite for their vaccination.\\nIf you believe you’re eligible for a vaccination, but have not received your invite, then [visit the NHS website on the COVID-19 vaccination](https://www.nhs.uk/conditions/covid-19/covid-19-vaccination/getting-a-covid-19-vaccine/) for more information.\",\n                        \"ruleLogicOverview\": \"The table below shows the clinical rules used to determine who should be contacted or reminded to receive their autumn booster vaccinations based on specific medical conditions.\\nThese conditions are detailed in the [Green Book](https://www.gov.uk/government/publications).\",\n                        \"urlSlug\": \"chronic-heart-disease\",\n                        \"name\": \"Chronic heart disease\",\n                        \"conditions\": [\n                            {\n                                \"id\": \"2f4660d4-54b8-4303-9657-d7e1c63359d1\",\n                                \"description\": \"People requiring regular medication and/or follow-up for ischaemic heart disease\\nThis includes:\\n- atrial fibrillation\\n- peripheral vascular disease\\n- a history of venous thromboembolism\",\n                                \"nonDigitalPathwayText\": \"All conditions are included in the CaaS digital pathway\",\n                                \"rulesets\": [\n                                    {\n                                        \"logicallyAndRules\": false,\n                                        \"rules\": [\n                                            {\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"9a9f346f-00cc-4211-a345-12ba8b1e1964\",\n                                                        \"shortDescription\": \"Atrial fibrillation\",\n                                                        \"clusterName\": \"AFIB_COD\"\n                                                    },\n                                                    {\n                                                        \"id\": \"34924389-3537-4a2d-b2c1-3ded311319d8\",\n                                                        \"shortDescription\": \"Peripheral arterial disease diagnostic\",\n                                                        \"clusterName\": \"PAD_COD\"\n                                                    }\n                                                ],\n                                                \"codeListsResolving\": [],\n                                                \"patientAgeConstraints\": [\n                                                    {\n                                                        \"minAgeMonths\": 192,\n                                                        \"maxAgeMonths\": 0\n                                                    }\n                                                ],\n                                                \"eventDateConstraint\": null,\n                                                \"eventCountConstraint\": null\n                                            }\n                                        ]\n                                    }\n                                ]\n                            },\n                            {\n                                \"id\": \"083cacb1-8dcc-464c-aeba-67714c844772\",\n                                \"description\": \"People with:\\n- congenital heart disease\\n- hypertension with cardiac complications\\n- chronic heart failure\",\n                                \"nonDigitalPathwayText\": \"All conditions are included in the CaaS digital pathway\",\n                                \"rulesets\": [\n                                    {\n                                        \"logicallyAndRules\": false,\n                                        \"rules\": [\n                                            {\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"29994865-aaad-4721-ab48-7700260e7a0b\",\n                                                        \"shortDescription\": \"Chronic heart disease\",\n                                                        \"clusterName\": \"CHRONHD_COD\"\n                                                    },\n                                                    {\n                                                        \"id\": \"ebf18501-c7d4-4241-a535-8706236ac583\",\n                                                        \"shortDescription\": \"ICD-10 code for congenital heart disease (people over 5 years of age)\",\n                                                        \"clusterName\": \"\"\n                                                    }\n                                                ],\n                                                \"codeListsResolving\": [],\n                                                \"patientAgeConstraints\": [\n                                                    {\n                                                        \"minAgeMonths\": 60,\n                                                        \"maxAgeMonths\": 192\n                                                    }\n                                                ],\n                                                \"eventDateConstraint\": null,\n                                                \"eventCountConstraint\": null\n                                            },\n                                            {\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"baed8421-bd83-49d7-9b5e-4445b83e7c93\",\n                                                        \"shortDescription\": \"Chronic heart disease\",\n                                                        \"clusterName\": \"CHRONHD_COD\"\n                                                    },\n                                                    {\n                                                        \"id\": \"92489dca-2c5f-43f6-9ee6-fbaac0d0cf4c\",\n                                                        \"shortDescription\": \"ICD-10 code for congenital heart disease (people over 16 years of age)\",\n                                                        \"clusterName\": \"\"\n                                                    }\n                                                ],\n                                                \"codeListsResolving\": [],\n                                                \"patientAgeConstraints\": [\n                                                    {\n                                                        \"minAgeMonths\": 192,\n                                                        \"maxAgeMonths\": 0\n                                                    }\n                                                ],\n                                                \"eventDateConstraint\": null,\n                                                \"eventCountConstraint\": null\n                                            }\n                                        ]\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            },\n            {\n                \"__typename\": \"Cohort\",\n                \"authors\": \"[\\\"Author name\\\"]\",\n                \"clinicalAtRiskGroupsText\": \"The condition groups listed below provide detailed information on who is included and excluded from the digital cohort.\\n\\nThe list is not exhaustive, and decisions should be based on clinical judgement.\\n\\nThe clinical at-risk groups are:\",\n                \"id\": \"220de6d4-62f8-4757-8f27-177817ce0085\",\n                \"commissioner\": \"NHS-E vaccination programme's Tech and Data workstream, delivered by NHS Digital.\",\n                \"demographicsText\": \"All people aged 6 months or older that are in the clinical risk groups shown in the Green Book.\",\n                \"description\": \"The vaccination is recommended for all people over 6 months of age. It provides protection to those who are at higher risk of serious illness.\",\n                \"disclaimerText\": \"The information provided outlines CaaS's approach to delivering this cohort using established methodologies. It highlights any differences from the clinical criteria in the Green Book and associated assumptions.\",\n                \"fixedDateReference\": null,\n                \"name\": \"Vaccinations 2022 to 2023\",\n                \"purpose\": \"Direct Care\",\n                \"shortName\": \"Vaccination cohort\",\n                \"urlSlug\": \"22-to-23\",\n                \"summary\": \"NHS England commissioned Cohorting as a Service (CaaS) to identify people that were eligible for the 2022 to 2023 vaccination.\\nTo be eligible, they needed to be:\\n- 6 months of age or older\\n- in defined clinical risk groups shown in the [Green Book](https://www.gov.uk/government/publications/)\\nCaaS developed specific rules based on the conditions in the Green Book and used clinical data to identify people who met those rules.\\nThe data collected helped to:\\n- contact or remind people to receive their vaccination between 1 September 2022 and 31 March 2023\\n- focus protection on those at a clinical risk\\n- monitor the number of people who received the vaccination\",\n                \"conditionGroups\": [\n                    {\n                        \"id\": \"b867218e-9ec1-43f9-b0ef-b2ae1fc99fa8\",\n                        \"nonDigitalPathwayOverview\": \"If a person receives care from another healthcare provider, for example a hospital, specialist, or community clinic, their GP record is not automatically updated.\\nIf a person’s GP record is not up-to-date when creating a cohort, they may not be included in the digital pathway.\\nThis may result in a person not receiving the invite for their vaccination.\\nIf you believe you’re eligible for a vaccination, but have not received your invite, then [visit the NHS website on the vaccination](https://www.nhs.uk/conditions/vaccinations/) for more information.\",\n                        \"ruleLogicOverview\": \"The table below shows the clinical rules used to determine who should be contacted or reminded to receive their vaccination based on specific medical conditions.\\nThese conditions are detailed in the [Green Book](https://www.gov.uk/government/publications/).\",\n                        \"urlSlug\": \"22-to-23-chronic-heart-disease\",\n                        \"name\": \"Chronic heart disease (2022 to 2023)\",\n                        \"conditions\": [\n                            {\n                                \"id\": \"d144ace1-59b4-4f69-8390-0034140d3109\",\n                                \"description\": \"People with:\\n- congenital heart disease with cardiac complications\\n- chronic heart failure\\n- regular medication and/or follow-up for ischaemic heart disease\",\n                                \"nonDigitalPathwayText\": \"All conditions are included in the CaaS digital pathway\",\n                                \"rulesets\": [\n                                    {\n                                        \"logicallyAndRules\": false,\n                                        \"rules\": [\n                                            {\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"e5d7bc31-bed2-42a9-ad2f-b8f20b2f49e5\",\n                                                        \"shortDescription\": \"Chronic heart disease\",\n                                                        \"clusterName\": \"CHRONHD_COD\"\n                                                    }\n                                                ],\n                                                \"codeListsResolving\": [],\n                                                \"patientAgeConstraints\": [\n                                                    {\n                                                        \"minAgeMonths\": 6,\n                                                        \"maxAgeMonths\": 0\n                                                    }\n                                                ],\n                                                \"eventDateConstraint\": null,\n                                                \"eventCountConstraint\": null\n                                            }\n                                        ]\n                                    }\n                                ]\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": \"ae0324d0-3fed-4766-bae2-26e089b78b8a\",\n                        \"nonDigitalPathwayOverview\": \"If a person receives care from another healthcare provider, for example a hospital, specialist, or community clinic, their GP record is not automatically updated.\\nIf a person’s GP record is not up-to-date when creating a cohort, they may not be included in the digital pathway.\\nThis may result in a person not receiving the invite for their vaccination.\\nIf you believe you’re eligible for a vaccination, but have not received your invite, then [visit the NHS website](https://www.nhs.uk/conditions/vaccinations/) for more information.\",\n                        \"ruleLogicOverview\": \"The table below shows the clinical rules used to determine who should be contacted or reminded to receive their vaccination based on specific medical conditions.\\nThese conditions are detailed in the [Green Book](https://www.gov.uk/government/publications/).\",\n                        \"urlSlug\": \"chronic-kidney-disease\",\n                        \"name\": \"Chronic kidney disease\",\n                        \"conditions\": [\n                            {\n                                \"id\": \"8f1d31a9-784a-41cb-81f7-84b907248be4\",\n                                \"description\": \"People with:\\n- chronic kidney disease at stage 3, 4 or 5\\n- chronic kidney failure\\n- nephrotic syndrome\\n- kidney transplant\",\n                                \"nonDigitalPathwayText\": \"All conditions are included in the CaaS digital pathway\",\n                                \"rulesets\": [\n                                    {\n                                        \"logicallyAndRules\": false,\n                                        \"rules\": [\n                                            {\n                                                \"codeListInclusions\": [\n                                                    {\n                                                        \"id\": \"d480eb36-5aa9-4e3c-91ab-9757cd19909e\",\n                                                        \"shortDescription\": \"Chronic kidney disease stage 3, 4 or 5\",\n                                                        \"clusterName\": \"CKDATRISK2_COD\"\n                                                    }\n                                                ],\n                                                \"codeListsResolving\": [\n                                                    {\n                                                        \"id\": \"70143e00-0f7a-4ec0-b7d3-546b39efc96d\",\n                                                        \"shortDescription\": \"Chronic kidney disease stage 1 and 2\",\n                                                        \"clusterName\": \"CKD1AND2ATRISK1_COD\"\n                                                    }\n                                                ],\n                                                \"patientAgeConstraints\": [\n                                                    {\n                                                        \"minAgeMonths\": 6,\n                                                        \"maxAgeMonths\": 0\n                                                    }\n                                                ],\n                                                \"eventDateConstraint\": null,\n                                                \"eventCountConstraint\": null\n                                            }\n                                        ]\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "SandboxURL",
+			"value": "https://internal-qa-sandbox.api.service.nhs.uk/caas-published-cohort-definitions/api",
+			"type": "string"
+		},
+		{
+			"key": "validUrlSlug",
+			"value": "booster-vaccinations-v1",
+			"type": "string"
+		},
+		{
+			"key": "invalidUrlSlug",
+			"value": "fake-url-slug",
+			"type": "string"
+		},
+		{
+			"key": "integerUrlSlug",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}

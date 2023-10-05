@@ -1,0 +1,23 @@
+name: Make Install Action
+description: Performs a make install in the current job
+
+runs:
+  using: composite
+  steps:
+    - name: execute make install
+      shell: bash
+      run: |-
+        # Install dependencies
+        git --version
+        node --version
+        echo -n "
+        ====================================================================\n
+        ==== Starting setup for ${{ github.job }} ==== @ $(date) \n
+        ====================================================================\n
+        "
+        time make install-node
+        echo -n "
+        ====================================================================\n
+        ==== Setup done ${{ github.job }} ==== @ $(date) \n
+        ====================================================================\n
+        "
