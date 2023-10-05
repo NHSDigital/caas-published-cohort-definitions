@@ -1222,7 +1222,7 @@ info:
       "variable": [
         {
           "key": "SandboxURL",
-          "value": "https://internal-dev-sandbox.api.service.nhs.uk/caas-published-cohort-definitions/api",
+          "value": "https://internal-qa-sandbox.api.service.nhs.uk/caas-published-cohort-definitions/api",
           "type": "string"
         },
         {
