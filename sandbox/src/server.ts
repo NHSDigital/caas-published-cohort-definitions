@@ -1,6 +1,9 @@
 /* eslint-disable no-console */
 import { ApolloServer, ApolloServerPlugin } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { expressMiddleware } from '@apollo/server/express4';
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 import { log } from './logger/logger';
 import { GraphQLSchema } from 'graphql';
 import { buildSchema } from 'type-graphql';
@@ -66,30 +69,51 @@ export async function returnSchema(): Promise<GraphQLSchema> {
 }
 
 async function cohortApiMockserver() {
-  const server = new ApolloServer<MockserverContext>({
-    schema: await returnSchema(),
+    const app = express();
+    // const httpServer = http.createServer(app);
+    const server = new ApolloServer<MockserverContext>({
+        schema: await returnSchema(),
 
-    plugins: [requestLogger, formatResponse],
-  });
+        plugins: [requestLogger, formatResponse/*, ApolloServerPluginDrainHttpServer({httpServer})*/],
+    });
 
   async function start() {
-    const { url } = await startStandaloneServer(server, {
-      context: async () => ({
-        allCohorts: data
-      }),
-      listen: { port },
-    });
-    console.log(`Cohort api mockserver running at ${url}`);
+    await server.start()
+
+    app.use(
+        '/',
+        cors<cors.CorsRequest>(),
+        bodyParser.json({ limit: '50mb' }),
+        expressMiddleware(server, {
+            context: async () => ({
+                allCohorts: data
+            }),
+        })
+    )
+
+    await new Promise<void>((resolve) => app.listen({ port }, resolve));
+
+    app.get('/_status', (req, res, next) =>{
+        res.json({
+            status: "pass",
+            ping: "pong",
+            service: req.app.locals.app_name,
+            version: req.app.locals.version_info
+        });
+        res.end();
+        next();
+    })
+    console.log(`Published cohort definitions API sandbox running at ${port}`);
   }
 
   await start().catch((error) => {
-    console.error(`Cohort API Mockserver Error: ${error.message}`);
+    console.error(`Published cohort definitions API sandbox Error: ${error.message}`);
   });
 }
 
 cohortApiMockserver().catch((e) => {
   console.error(
-    `Cohort API Mockserver Error - command failed: ${process.argv.join(' ')}`
+    `Published cohort definitions API sandbox Error - command failed: ${process.argv.join(' ')}`
   );
   console.error(e);
   process.exitCode = 1;
