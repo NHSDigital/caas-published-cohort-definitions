@@ -93,7 +93,7 @@ async function cohortApiMockserver() {
 
     await new Promise<void>((resolve) => app.listen({ port }, resolve));
 
-    app.get('/_status', (req, res, next) =>{
+    app.get('/cpcd/_status', (req, res, next) =>{
         res.json({
             status: "pass",
             ping: "pong",
