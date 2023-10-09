@@ -25,7 +25,7 @@ jobs:
             - name: Perform Setup
               uses: ./.github/actions/make_install_action
             - name: Run tests
-              run: npm run postman-test -- --env-var="https://internal-dev-sandbox.api.service.nhs.uk/caas-published-cohort-definitions/api"
+              run: npm run postman-test -- --env-var="SandboxURL=https://internal-dev-sandbox.api.service.nhs.uk/caas-published-cohort-definitions/api"
     create_release:
         name: build
         runs-on: ubuntu-latest
