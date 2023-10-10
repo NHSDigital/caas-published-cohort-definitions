@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { ApolloServer, ApolloServerPlugin } from '@apollo/server';
+import { ApolloServer, ApolloServerPlugin, GraphQLRequestContext } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import express from 'express';
 import cors from 'cors';
@@ -32,6 +32,28 @@ const requestLogger: ApolloServerPlugin<MockserverContext> = {
       },
     };
   },
+
+  async unexpectedErrorProcessingRequest({requestContext,error}: {
+    requestContext: GraphQLRequestContext<MockserverContext>;
+    error: Error;
+  }) {
+    log.error({
+        description: 'Unexpected error occurred',
+        request: {
+            query: requestContext.request.query,
+            variables: requestContext.request.variables
+        },
+        error
+    })
+  },
+
+  async invalidRequestWasReceived({ error }: { error: Error }) {
+    log.error(error)
+  },
+
+  async startupDidFail({ error }: { error: Error }) {
+    log.error(error)
+  }
 };
 
 const formatResponse: ApolloServerPlugin<MockserverContext> = {
