@@ -102,6 +102,29 @@ async function cohortApiMockserver() {
   async function start() {
     await server.start()
 
+
+    app.get('/_ping', (req,res,next) => {
+        res.json({
+            status: "pass",
+            ping: "pong",
+            service: req.app.locals.app_name,
+            version: req.app.locals.version_info
+        })
+        res.end();
+        next();
+    });
+
+    app.get('/_status', (req, res, next) =>{
+        res.json({
+            status: "pass",
+            ping: "pong",
+            service: req.app.locals.app_name,
+            version: req.app.locals.version_info
+        });
+        res.end();
+        next();
+    });
+
     app.use(
         '/',
         cors<cors.CorsRequest>(),
@@ -114,28 +137,6 @@ async function cohortApiMockserver() {
     )
 
     await new Promise<void>((resolve) => app.listen({ port }, resolve));
-
-    app.get('/_ping', (req,res,next) => {
-        res.json({
-            status: "pass",
-            ping: "pong",
-            service: req.app.locals.app_name,
-            version: req.app.locals.version_info
-        })
-        res.end();
-        next();
-    })
-
-    app.get('/_status', (req, res, next) =>{
-        res.json({
-            status: "pass",
-            ping: "pong",
-            service: req.app.locals.app_name,
-            version: req.app.locals.version_info
-        });
-        res.end();
-        next();
-    })
     console.log(`Published cohort definitions API sandbox running at ${port}`);
   }
 
