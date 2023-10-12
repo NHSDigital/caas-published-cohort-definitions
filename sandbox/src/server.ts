@@ -33,26 +33,25 @@ const requestLogger: ApolloServerPlugin<MockserverContext> = {
     };
   },
 
-  async unexpectedErrorProcessingRequest({requestContext,error}: {
-    requestContext: GraphQLRequestContext<MockserverContext>;
-    error: Error;
-  }) {
+  async unexpectedErrorProcessingRequest() {
     log.error({
-        description: 'Unexpected error occurred',
-        request: {
-            query: requestContext.request.query,
-            variables: requestContext.request.variables
-        },
-        error
+        description: 'Unexpected server error',
+        infoCode: 'APIS500'
     })
   },
 
-  async invalidRequestWasReceived({ error }: { error: Error }) {
-    log.error(error)
+  async invalidRequestWasReceived() {
+    log.error({
+        description: 'Invalid Request',
+        infoCode: 'APIMS400'
+    })
   },
 
-  async startupDidFail({ error }: { error: Error }) {
-    log.error(error)
+  async startupDidFail() {
+    log.error({
+        description: 'Server startup failure',
+        infoCode: 'APIMSERR'
+    })
   }
 };
 
