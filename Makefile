@@ -73,6 +73,11 @@ functionaltest:
 	--junitxml=functionaltest-report.xml \
 	-m functionaltest
 
+sandboxtest:
+	$(TEST_CMD) \
+	--junitxml=sandboxtest-report.xml \
+	-m sandboxtest
+
 test:
 	$(TEST_CMD) \
 	--junitxml=test-report.xml \
