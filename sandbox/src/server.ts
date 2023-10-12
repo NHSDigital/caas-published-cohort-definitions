@@ -36,7 +36,7 @@ const requestLogger: ApolloServerPlugin<MockserverContext> = {
   async unexpectedErrorProcessingRequest() {
     log.error({
         description: 'Unexpected server error',
-        infoCode: 'APIS500'
+        infoCode: 'APIMS500'
     })
   },
 
