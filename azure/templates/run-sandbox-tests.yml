@@ -11,11 +11,11 @@ steps:
 
     - bash: |
           make install-node
-      workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
+      workingDirectory: $(Build.SourcesDirectory)
       displayName: Setup postman-tests
       condition: always()
 
     - bash: |
           npm run postman-test
-      workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
+      workingDirectory: $(Build.SourcesDirectory)
       displayName: Run postman-tests
