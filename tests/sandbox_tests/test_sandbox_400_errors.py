@@ -20,10 +20,11 @@ def test_data_invalid(correlation_id):
         )
     }
 
-    error_response = requests.post(
+    requests.post(
         f"{SANDBOX_URL}/api",
         headers=Generators.generate_target_server_headers(correlation_id), json=invalid_request_body
     )
+
     # Assertions.assert_error_with_optional_correlation_id(
     #     error_response,
     #     400,
