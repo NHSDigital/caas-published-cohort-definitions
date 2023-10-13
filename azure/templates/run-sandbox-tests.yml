@@ -15,7 +15,7 @@ parameters:
 steps:
     - bash: |
           make install-node
-      workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)
+      workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
       displayName: Setup postman-tests
       condition: always()
     - bash: |
