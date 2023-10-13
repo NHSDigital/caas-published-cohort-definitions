@@ -40,7 +40,5 @@ extends:
               full: true
       - environment: internal-dev-sandbox
         proxy_path: sandbox
-        test_steps:
-        - bash: "npm run postman-test -- --env-var 'SandboxURL=https://internal-dev-sandbox.api.service.nhs.uk/caas-published-cohort-definitions/api'"
-            displayName: Run Postman tests
-            workingDirectory: "${{ variables.service_name }}"
+        post_deploy:
+          - template: ./templates/run-sandbox-tests.yml
