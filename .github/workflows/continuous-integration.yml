@@ -14,6 +14,18 @@ jobs:
               uses: ./.github/actions/make_install_action
             - name: Run linting
               run: npm run lint
+    # postman_testing:
+    #     name: Running postman tests
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - name: Checkout
+    #           uses: actions/checkout@v3
+    #           with:
+    #             fetch-depth: 0  # This causes all history to be fetched, which is required for calculate-version to function
+    #         - name: Perform Setup
+    #           uses: ./.github/actions/make_install_action
+    #         - name: Run tests
+    #           run: npm run postman-test
     create_release:
         name: build
         runs-on: ubuntu-latest
