@@ -5,9 +5,12 @@ for more ideas on how to test the authorization of your API.
 """
 import requests
 import pytest
+import os
 from lib import Assertions
 from lib import Generators
-from lib.constants import CORRELATION_IDS, SANDBOX_URL
+from lib.constants import CORRELATION_IDS
+
+SANDBOX_URL = os.environ.get("SANDBOX_URL")
 
 
 @pytest.mark.skip(reason="Sandbox tests are intermittently failing with 503 error")

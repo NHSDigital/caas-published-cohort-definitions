@@ -5,8 +5,12 @@ for more ideas on how to test the authorization of your API.
 """
 import requests
 import pytest
+import os
 from lib import Assertions
-from lib.constants import SANDBOX_URL, METHODS
+from lib.constants import METHODS
+
+
+SANDBOX_URL = os.environ.get("SANDBOX_URL")
 
 FORBIDDEN_TOKEN = {
     "Authorization": "Bearer ClientNotRecognised"

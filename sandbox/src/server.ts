@@ -127,7 +127,7 @@ async function cohortApiMockserver() {
     app.use(
         '/',
         cors<cors.CorsRequest>(),
-        bodyParser.json({ limit: '50mb' }),
+        bodyParser.json({ limit: '5MB' }),
         expressMiddleware(server, {
             context: async () => ({
                 allCohorts: data

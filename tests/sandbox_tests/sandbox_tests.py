@@ -6,13 +6,15 @@ for more ideas on how to test the authorization of your API.
 import requests
 import pytest
 import json
-from lib.constants import SANDBOX_URL, URL_SLUG_SANDBOX
+import os
+from lib.constants import URL_SLUG_SANDBOX
 from lib.api_helpers import (
     published_cohort_library_get_all_request_body,
     sandbox_published_cohort_library_get_all_expected_response,
     get_by_slug_name_request_body)
 
 expected_response_published_library_get_all = json.load(sandbox_published_cohort_library_get_all_expected_response)
+SANDBOX_URL = os.environ.get("SANDBOX_URL")
 
 
 @pytest.mark.skip(reason="Sandbox tests are intermittently failing with 503 error")
