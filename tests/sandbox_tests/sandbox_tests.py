@@ -15,7 +15,7 @@ from lib.api_helpers import (
 expected_response_published_library_get_all = json.load(sandbox_published_cohort_library_get_all_expected_response)
 
 
-@pytest.mark.sandboxtest
+@pytest.mark.skip(reason="Sandbox tests are intermittently failing with 503 error")
 def test_for_getall_query():
     published_cohort_definitions_response = requests.post(
         f"{SANDBOX_URL}/api",
@@ -28,7 +28,7 @@ def test_for_getall_query():
     assert expected_response_published_library_get_all == published_cohort_definitions_Response_json
 
 
-@pytest.mark.sandboxtest
+@pytest.mark.skip(reason="Sandbox tests are intermittently failing with 503 error")
 def test_for_urlslug_query():
 
     url_slug_query_response = requests.post(
