@@ -7,7 +7,8 @@ import requests
 import pytest
 import os
 from lib import Assertions
-from lib.constants import METHODS
+from lib.constants import CORRELATION_IDS
+from lib.api_helpers import published_cohort_library_get_all_request_body
 
 
 SANDBOX_URL = os.environ.get("SANDBOX_URL")
@@ -18,12 +19,19 @@ FORBIDDEN_TOKEN = {
 
 
 @pytest.mark.skip(reason="Sandbox tests are intermittently failing with 503 error")
-@pytest.mark.parametrize("method", METHODS)
-def test_403_forbidden(method):
-    error_response = getattr(requests, method)(f"{SANDBOX_URL}"),
+@pytest.mark.parametrize("correlation_id", CORRELATION_IDS)
+def test_403_forbidden(correlation_id):
+    error_response = requests.post(
+        f"{SANDBOX_URL}/api",
+        headers={
+            **FORBIDDEN_TOKEN,
+            "X-Correlation-Id": correlation_id
+        }, json=published_cohort_library_get_all_request_body
+    )
 
-    Assertions.assert_error(
+    Assertions.assert_error_with_optional_correlation_id(
         error_response,
         403,
         None,
+        correlation_id
     )
