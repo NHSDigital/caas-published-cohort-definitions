@@ -17,6 +17,7 @@ __pycache__/
 
 functionaltest-report.xml
 smoketest-report.xml
+sandboxtest-report.xml
 .env
 .dir-locals.el
 *.pyc
